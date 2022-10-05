@@ -1,0 +1,87 @@
+# Korean translations for PROJECT.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-10-04 16:42+0500\n"
+"PO-Revision-Date: 2022-10-04 16:43+0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ko\n"
+"Language-Team: ko <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: tgbot/handlers/user.py:28 tgbot/middlewares/check.py:50
+msgid ""
+"<b>Send a link and get your media!</b>\n"
+"\n"
+"You can download photo and video files from popular social media!\n"
+"\n"
+"Instagram\n"
+"TikTok\n"
+"Facebook\n"
+"YouTube\n"
+"Twitter\n"
+"Vkontakte\n"
+"SnapChat"
+msgstr "<b>링크를 보내고 미디어를 받으세요!</b>\n\n인기 있는 소셜 미디어에서 사진 및 비디오 파일을 다운로드할 수 있습니다!\n\nInstagram\nTikTok\nFacebook\nYouTube\nTwitter\nVkontakte\nSnapChat"
+
+#: tgbot/handlers/user.py:32
+msgid "Choose language"
+msgstr "언어 선택"
+
+#: tgbot/handlers/user.py:38
+msgid "Language changed"
+msgstr "언어 변경됨"
+
+#: tgbot/handlers/download_handler.py:25 tgbot/handlers/download_handler.py:48
+#: tgbot/handlers/download_handler.py:64 tgbot/handlers/download_handler.py:67
+#: tgbot/handlers/download_handler.py:71 tgbot/handlers/download_handler.py:74
+#: tgbot/handlers/download_handler.py:98
+msgid ""
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
+"fast and easy</b>"
+msgstr "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>빠르고 쉬운 다운로드</b>"
+
+#: tgbot/handlers/download_handler.py:30 tgbot/handlers/download_handler.py:118
+msgid ""
+"Media quality: {quality}\n"
+"\n"
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
+"fast and easy</b>"
+msgstr "미디어 품질: {quality}\n\n<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>빠르고 쉬운 다운로드</b>"
+
+#: tgbot/handlers/download_handler.py:33 tgbot/handlers/download_handler.py:50
+#: tgbot/handlers/download_handler.py:69 tgbot/handlers/download_handler.py:101
+#: tgbot/handlers/download_handler.py:120
+msgid ""
+"Size of media is too large but you can download it from <a "
+"href='{url}'>link</a>"
+msgstr "미디어 크기가 너무 크지만 <a href='{url}'>링크</a>에서 다운로드할 수 있습니다."
+
+#: tgbot/handlers/download_handler.py:39 tgbot/handlers/download_handler.py:54
+#: tgbot/handlers/download_handler.py:77 tgbot/handlers/download_handler.py:89
+#: tgbot/handlers/download_handler.py:108
+#: tgbot/handlers/download_handler.py:124
+msgid "Something went wrong, try again."
+msgstr "문제가 발생했습니다. 다시 시도해 주세요."
+
+#: tgbot/keyboards/inline.py:30
+msgid "✅ Subscribed"
+msgstr "✅ 나는 구독했다"
+
+#: tgbot/middlewares/check.py:52 tgbot/middlewares/check.py:89
+msgid "Please, subscribe to the following channels to use bot."
+msgstr "봇을 사용하려면 다음 채널을 구독하십시오."
+
+#: tgbot/middlewares/check.py:95
+msgid "Your limit for today is over."
+msgstr "오늘의 한도는 끝났습니다."
+

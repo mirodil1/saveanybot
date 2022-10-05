@@ -1,0 +1,88 @@
+# Arabic translations for PROJECT.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-10-04 16:42+0500\n"
+"PO-Revision-Date: 2022-10-04 16:43+0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ar\n"
+"Language-Team: ar <LL@li.org>\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : "
+"n%100>=3 && n%100<=10 ? 3 : n%100>=0 && n%100<=2 ? 4 : 5)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: tgbot/handlers/user.py:28 tgbot/middlewares/check.py:50
+msgid ""
+"<b>Send a link and get your media!</b>\n"
+"\n"
+"You can download photo and video files from popular social media!\n"
+"\n"
+"Instagram\n"
+"TikTok\n"
+"Facebook\n"
+"YouTube\n"
+"Twitter\n"
+"Vkontakte\n"
+"SnapChat"
+msgstr "<b> أرسل ارتباطًا واحصل على الوسائط الخاصة بك! </b>\n\nيمكنك تنزيل ملفات الصور والفيديو من الوسائط الاجتماعية الشهيرة!\n\nInstagram\nTikTok\nFacebook\nYouTube\nTwitter\nVkontakte\nSnapChat
+
+#: tgbot/handlers/user.py:32
+msgid "Choose language"
+msgstr "اختر اللغة"
+
+#: tgbot/handlers/user.py:38
+msgid "Language changed"
+msgstr "تغيرت اللغة"
+
+#: tgbot/handlers/download_handler.py:25 tgbot/handlers/download_handler.py:48
+#: tgbot/handlers/download_handler.py:64 tgbot/handlers/download_handler.py:67
+#: tgbot/handlers/download_handler.py:71 tgbot/handlers/download_handler.py:74
+#: tgbot/handlers/download_handler.py:98
+msgid ""
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
+"fast and easy</b>"
+msgstr "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b> تحميل سريع وسهل </b>"
+
+#: tgbot/handlers/download_handler.py:30 tgbot/handlers/download_handler.py:118
+msgid ""
+"Media quality: {quality}\n"
+"\n"
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
+"fast and easy</b>"
+msgstr "جودة الوسائط: {quality}\n<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>تنزيل سريع وسهل</b>"
+
+#: tgbot/handlers/download_handler.py:33 tgbot/handlers/download_handler.py:50
+#: tgbot/handlers/download_handler.py:69 tgbot/handlers/download_handler.py:101
+#: tgbot/handlers/download_handler.py:120
+msgid ""
+"Size of media is too large but you can download it from <a "
+"href='{url}'>link</a>"
+msgstr "حجم الوسائط كبير جدًا ولكن يمكنك تنزيله من <a href='{url}'> رابط </a>"
+
+#: tgbot/handlers/download_handler.py:39 tgbot/handlers/download_handler.py:54
+#: tgbot/handlers/download_handler.py:77 tgbot/handlers/download_handler.py:89
+#: tgbot/handlers/download_handler.py:108
+#: tgbot/handlers/download_handler.py:124
+msgid "Something went wrong, try again."
+msgstr "حدث خطأ ما حاول مرة أخرى."
+
+#: tgbot/keyboards/inline.py:30
+msgid "✅ Subscribed"
+msgstr "✅ اشتركت"
+
+#: tgbot/middlewares/check.py:52 tgbot/middlewares/check.py:89
+msgid "Please, subscribe to the following channels to use bot."
+msgstr ".من فضلك ، اشترك في القنوات التالية لاستخدام البوت"
+
+#: tgbot/middlewares/check.py:95
+msgid "Your limit for today is over."
+msgstr ".الحد الخاص بك لهذا اليوم قد انتهى"
+
