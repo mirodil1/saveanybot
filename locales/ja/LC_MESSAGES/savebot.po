@@ -75,7 +75,7 @@ msgstr "エラーが発生しました。もう一度お試しください。"
 
 #: tgbot/keyboards/inline.py:30
 msgid "✅ Subscribed"
-msgstr "✅ Subscribed"
+msgstr "✅ 購読しました"
 
 #: tgbot/middlewares/check.py:52 tgbot/middlewares/check.py:89
 msgid "Please, subscribe to the following channels to use bot."

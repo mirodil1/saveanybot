@@ -14,12 +14,46 @@ bot = Bot(token=config.tg_bot.token, parse_mode='HTML')
 # Subscription button
 response_callback = CallbackData("channel", "link")
 
+btn_text_en = "✅ Subscribed"
+btn_text_ar = "✅ اشتركت"
+btn_text_de = "✅ Ich habe abonniert"
+btn_text_es = "✅ Me suscribí"
+btn_text_fa = "✅ من مشترک شدم"
+btn_text_hi = "✅ मैंने सदस्यता ली"
+btn_text_ja = "✅ 購読しました"
+btn_text_kk = "✅ Жазылдым"
+btn_text_ko = "✅ 나는 구독했다"
+btn_text_ru = "✅ Подписался"
+btn_text_tr = "✅ Abone oldum"
+btn_text_uk = "✅ Підписався"
+btn_text_uz = "✅ Obuna bo'ldim"
+btn_text_zh = "✅ 訂閱"
+
+
+btn_text = {
+        "uz": btn_text_uz,
+        "ru": btn_text_ru,
+        "en": btn_text_en,
+        "zh": btn_text_zh,
+        "ja": btn_text_ja,
+        "kk": btn_text_kk,
+        "ar": btn_text_ar,
+        "de": btn_text_de,
+        "ko": btn_text_ko,
+        "es": btn_text_es,
+        "fa": btn_text_fa,
+        "tr": btn_text_tr,
+        "uk": btn_text_uk,
+        "hi": btn_text_hi,
+    }
+
+
 async def subscription_button(channels, user):
 
     markup = InlineKeyboardMarkup(row_width=1)
     for ch in channels:
         if ch['status']:
-            status = await check_user_sub(user_id=user, channel=ch['username'])
+            status = await check_user_sub(user_id=user['telegram_id'], channel=ch['username'])
         try:
             channel = await bot.get_chat(ch['username'])
         except:
@@ -29,7 +63,7 @@ async def subscription_button(channels, user):
                 InlineKeyboardButton(text="{title}".format(title=channel.title), url= ch['invite_link'])
             )
     markup.insert(
-        InlineKeyboardButton(_("✅ Subscribed"), callback_data="check_subs")
+        InlineKeyboardButton(text=btn_text[user['language_code']], callback_data="check_subs")
     )
     return markup
 
