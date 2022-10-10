@@ -5,6 +5,8 @@ from aiogram import types
 from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.contrib.fsm_storage.redis import RedisStorage2
+from aiogram.bot.api import TelegramAPIServer
+
 
 from tgbot.config import load_config
 from tgbot.filters.admin import AdminFilter
@@ -61,8 +63,11 @@ async def main():
     logger.info("Starting bot")
     config = load_config(".env")
 
+    # Create private Bot API server endpoints wrapper
+    local_server = TelegramAPIServer.from_base('http://0.0.0.0:8081')
+    print(local_server)
     storage = RedisStorage2() if config.tg_bot.use_redis else MemoryStorage()
-    bot = Bot(token=config.tg_bot.token, parse_mode='HTML')
+    bot = Bot(token=config.tg_bot.token, server=local_server, parse_mode='HTML')
     dp = Dispatcher(bot, storage=storage)
     bot['config'] = config
 
@@ -75,8 +80,9 @@ async def main():
 
     asyncio.create_task(scheduler())
 
-    await set_default_commands(bot)
+    # await set_default_commands(bot)
     
+    # await bot.log_out()
     # start
     try:
         await dp.start_polling()

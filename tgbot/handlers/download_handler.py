@@ -5,7 +5,7 @@ from aiogram.dispatcher import filters
 from tgbot.services.download import download_from_twitter, download_from_youtube, download_from_instagram, download_video_from_tiktok, download_from_facebook, download_from_vkontakte
 from tgbot.middlewares.i18n import _
 from tgbot.services.db import db
-
+import os
 
 YOUTUBE_REGEX = r'(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?'
 INSTA_REGEX = r'((?:https?:\/\/www\.)?instagram\.com\/)'
@@ -19,21 +19,24 @@ async def youtube_download_handler(message: types.Message):
     waiting_msg = await message.answer('🔍')
     video_url = message.text
     result = await download_from_youtube(video_url)
+    print(result)
     if not result['hasError']:
         await waiting_msg.delete()
         try:
             await message.answer_photo(result['thumb'], caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
         except Exception as e:
             print(e)
-        for item in result['items']:
-            try:
-                await message.answer_video(item['url'], caption=_("Media quality: {quality}\n\n<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>").format(quality=item['quality']))
-            except:
-                try:
-                    await message.answer(_("Size of media is too large but you can download it from <a href='{url}'>link</a>").format(url=item['url']))
-                except:
-                    pass
-                    # await message.answer("Something went wrong, try again.")
+        # for item in result['items']:
+        # try:
+        file = types.InputFile(path_or_bytesio=result['file'])
+        await message.answer_video(file, caption=_("Media quality: {quality}\n\n<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>").format(quality=result['items']['quality']))
+        os.remove(result['file'])
+        # except:
+        #     try:
+        #         await message.answer(_("Size of media is too large but you can download it from <a href='{url}'>link</a>").format(url=item['url']))
+        #     except:
+        #         pass
+                # await message.answer("Something went wrong, try again.")
         await db.consume_credits(telegram_id=message.from_user.id)
     elif result['hasError']:
         await message.answer(_("Something went wrong, try again."))
@@ -45,7 +48,9 @@ async def twitter_download_handler(message: types.Message):
     if not result['hasError']:
         await waiting_msg.delete()
         try:
-            await message.answer_video(result['url'], caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
+            file_path = types.InputFile(path_or_bytesio=result['url'])
+            await message.answer_video(file_path, caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
+            os.remove(result['url'])
         except:
             await message.answer(_("Size of media is too large but you can download it from <a href='{url}'>link</a>").format(url=result['url']))
         await db.consume_credits(telegram_id=message.from_user.id)
@@ -125,7 +130,7 @@ async def vk_download_handler(message: types.Message):
 
 
 def register_download_handler(dp: Dispatcher):
-    dp.register_message_handler(insta_download_handler, filters.Regexp(INSTA_REGEX))
+    dp.register_message_handler(insta_download_handler, filters.Regexp(INSTA_REGEX))    
     dp.register_message_handler(youtube_download_handler, filters.Regexp(YOUTUBE_REGEX))
     dp.register_message_handler(twitter_download_handler, filters.Regexp(TWITTER_REGEX))
     dp.register_message_handler(tiktok_download_handler, filters.Regexp(TIKTOK_REGEX))
