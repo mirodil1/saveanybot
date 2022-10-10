@@ -88,7 +88,7 @@ async def download_from_youtube(video_url):
                                  status=True,
                                  created_at=datetime.now())
         for item in res:
-            if ((item['type'] == "mp4 dash" or item['type'] == "mp4") and (item['quality']=='360')):
+            if ((item['type'] == "mp4 dash" or item['type'] == "mp4") and (item['no_audio'] == False) and (item['quality']=='360')):
                 items = item
         
         FILE_TO_SAVE_AS = f"tgbot/media/{response['body']['meta']['title']}.mp4"
