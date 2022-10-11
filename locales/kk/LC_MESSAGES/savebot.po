@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-04 16:42+0500\n"
+"POT-Creation-Date: 2022-10-11 12:12+0500\n"
 "PO-Revision-Date: 2022-10-04 16:43+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: kk\n"
@@ -18,7 +18,48 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: tgbot/handlers/user.py:28 tgbot/middlewares/check.py:50
+#: tgbot/handlers/download_handler.py:25 tgbot/handlers/download_handler.py:48
+#: tgbot/handlers/download_handler.py:65 tgbot/handlers/download_handler.py:68
+#: tgbot/handlers/download_handler.py:72 tgbot/handlers/download_handler.py:75
+#: tgbot/handlers/download_handler.py:86 tgbot/handlers/download_handler.py:87
+#: tgbot/handlers/download_handler.py:99
+msgid ""
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
+"fast and easy</b>"
+msgstr ""
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Жылдам "
+"әрі оңай жүктеп алыңыз</b>"
+
+#: tgbot/handlers/download_handler.py:30 tgbot/handlers/download_handler.py:119
+msgid ""
+"Media quality: {quality}\n"
+"\n"
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
+"fast and easy</b>"
+msgstr ""
+"Медиа сапасы: {quality}\n"
+"\n"
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Жылдам "
+"әрі оңай жүктеп алыңыз</b>"
+
+#: tgbot/handlers/download_handler.py:33 tgbot/handlers/download_handler.py:51
+#: tgbot/handlers/download_handler.py:70 tgbot/handlers/download_handler.py:102
+#: tgbot/handlers/download_handler.py:121
+msgid ""
+"Size of media is too large but you can download it from <a "
+"href='{url}'>link</a>"
+msgstr ""
+"Медиа өлшемі тым үлкен, бірақ оны <a href='{url}'>сілтемеден</a> жүктеп "
+"алуға болады"
+
+#: tgbot/handlers/download_handler.py:38 tgbot/handlers/download_handler.py:55
+#: tgbot/handlers/download_handler.py:78 tgbot/handlers/download_handler.py:90
+#: tgbot/handlers/download_handler.py:109
+#: tgbot/handlers/download_handler.py:125
+msgid "Something went wrong, try again."
+msgstr "Бірдеңе дұрыс болмады, әрекетті қайталаңыз."
+
+#: tgbot/handlers/user.py:25
 msgid ""
 "<b>Send a link and get your media!</b>\n"
 "\n"
@@ -31,57 +72,49 @@ msgid ""
 "Twitter\n"
 "Vkontakte\n"
 "SnapChat"
-msgstr "<b>Сілтемені жіберіп, медиа файлдарыңызды алыңыз!</b>\n\nТанымал әлеуметтік желілерден фотосуреттер мен бейнелерді жүктеп алуға болады!\n\nInstagram\nTikTok\nFacebook\nYouTube\nTwitter\nVkontakte\nSnapChat"
+msgstr ""
+"<b>Сілтемені жіберіп, медиа файлдарыңызды алыңыз!</b>\n"
+"\n"
+"Танымал әлеуметтік желілерден фотосуреттер мен бейнелерді жүктеп алуға "
+"болады!\n"
+"\n"
+"Instagram\n"
+"TikTok\n"
+"Facebook\n"
+"YouTube\n"
+"Twitter\n"
+"Vkontakte\n"
+"SnapChat"
 
-#: tgbot/handlers/user.py:32
+#: tgbot/handlers/user.py:28
 msgid "Choose language"
 msgstr "Тілді таңдаңыз"
 
-#: tgbot/handlers/user.py:38
+#: tgbot/handlers/user.py:34
 msgid "Language changed"
 msgstr "Тіл өзгерді"
 
-#: tgbot/handlers/download_handler.py:25 tgbot/handlers/download_handler.py:48
-#: tgbot/handlers/download_handler.py:64 tgbot/handlers/download_handler.py:67
-#: tgbot/handlers/download_handler.py:71 tgbot/handlers/download_handler.py:74
-#: tgbot/handlers/download_handler.py:98
-msgid ""
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
-"fast and easy</b>"
-msgstr "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Жылдам әрі оңай жүктеп алыңыз</b>"
+#: tgbot/misc/set_bot_commands.py:8
+msgid "Restart bot"
+msgstr "Ботты қайта іске қосыңыз"
 
-#: tgbot/handlers/download_handler.py:30 tgbot/handlers/download_handler.py:118
-msgid ""
-"Media quality: {quality}\n"
-"\n"
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
-"fast and easy</b>"
-msgstr "Медиа сапасы: {quality}\n\n<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Жылдам әрі оңай жүктеп алыңыз</b>"
+#: tgbot/misc/set_bot_commands.py:9
+#, fuzzy
+msgid "Change language"
+msgstr "Тілді таңдаңыз"
 
-#: tgbot/handlers/download_handler.py:33 tgbot/handlers/download_handler.py:50
-#: tgbot/handlers/download_handler.py:69 tgbot/handlers/download_handler.py:101
-#: tgbot/handlers/download_handler.py:120
-msgid ""
-"Size of media is too large but you can download it from <a "
-"href='{url}'>link</a>"
-msgstr "Медиа өлшемі тым үлкен, бірақ оны <a href='{url}'>сілтемеден</a> жүктеп алуға болады"
+#~ msgid "✅ Subscribed"
+#~ msgstr "✅ Жазылдым"
 
-#: tgbot/handlers/download_handler.py:39 tgbot/handlers/download_handler.py:54
-#: tgbot/handlers/download_handler.py:77 tgbot/handlers/download_handler.py:89
-#: tgbot/handlers/download_handler.py:108
-#: tgbot/handlers/download_handler.py:124
-msgid "Something went wrong, try again."
-msgstr "Бірдеңе дұрыс болмады, әрекетті қайталаңыз."
+#~ msgid "Please, subscribe to the following channels to use bot."
+#~ msgstr "Ботты пайдалану үшін келесі арналарға жазылыңыз."
 
-#: tgbot/keyboards/inline.py:30
-msgid "✅ Subscribed"
-msgstr "✅ Жазылдым"
+#~ msgid "Your limit for today is over."
+#~ msgstr "Бүгінгі шектеуіңіз аяқталды."
 
-#: tgbot/middlewares/check.py:52 tgbot/middlewares/check.py:89
-msgid "Please, subscribe to the following channels to use bot."
-msgstr "Ботты пайдалану үшін келесі арналарға жазылыңыз."
+#~ msgid "start"
+#~ msgstr ""
 
-#: tgbot/middlewares/check.py:95
-msgid "Your limit for today is over."
-msgstr "Бүгінгі шектеуіңіз аяқталды."
+#~ msgid "lang"
+#~ msgstr ""
 

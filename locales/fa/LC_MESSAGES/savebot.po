@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-04 16:42+0500\n"
+"POT-Creation-Date: 2022-10-11 12:12+0500\n"
 "PO-Revision-Date: 2022-10-04 16:43+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fa\n"
@@ -18,7 +18,48 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: tgbot/handlers/user.py:28 tgbot/middlewares/check.py:50
+#: tgbot/handlers/download_handler.py:25 tgbot/handlers/download_handler.py:48
+#: tgbot/handlers/download_handler.py:65 tgbot/handlers/download_handler.py:68
+#: tgbot/handlers/download_handler.py:72 tgbot/handlers/download_handler.py:75
+#: tgbot/handlers/download_handler.py:86 tgbot/handlers/download_handler.py:87
+#: tgbot/handlers/download_handler.py:99
+msgid ""
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
+"fast and easy</b>"
+msgstr ""
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>دانلود "
+"سریع و آسان</b>"
+
+#: tgbot/handlers/download_handler.py:30 tgbot/handlers/download_handler.py:119
+msgid ""
+"Media quality: {quality}\n"
+"\n"
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
+"fast and easy</b>"
+msgstr ""
+"کیفیت رسانه: {quality}\n"
+"\n"
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>دانلود "
+"سریع و آسان</b>"
+
+#: tgbot/handlers/download_handler.py:33 tgbot/handlers/download_handler.py:51
+#: tgbot/handlers/download_handler.py:70 tgbot/handlers/download_handler.py:102
+#: tgbot/handlers/download_handler.py:121
+msgid ""
+"Size of media is too large but you can download it from <a "
+"href='{url}'>link</a>"
+msgstr ""
+"اندازه رسانه خیلی بزرگ است اما می‌توانید آن را از <a "
+"href='{url}'>پیوند</a> دانلود کنید"
+
+#: tgbot/handlers/download_handler.py:38 tgbot/handlers/download_handler.py:55
+#: tgbot/handlers/download_handler.py:78 tgbot/handlers/download_handler.py:90
+#: tgbot/handlers/download_handler.py:109
+#: tgbot/handlers/download_handler.py:125
+msgid "Something went wrong, try again."
+msgstr ".یه چیزی اشتباه شد دوباره تلاش کن"
+
+#: tgbot/handlers/user.py:25
 msgid ""
 "<b>Send a link and get your media!</b>\n"
 "\n"
@@ -31,57 +72,49 @@ msgid ""
 "Twitter\n"
 "Vkontakte\n"
 "SnapChat"
-msgstr "<b>یک پیوند ارسال کنید و رسانه خود را دریافت کنید!</b>\n\nمی‌توانید فایل‌های عکس و ویدیو را از رسانه‌های اجتماعی محبوب دانلود کنید!\n\nInstagram\nTikTok\nFacebook\nYouTube\nTwitter\nVkontakte\nSnapChat"
+msgstr ""
+"<b>یک پیوند ارسال کنید و رسانه خود را دریافت کنید!</b>\n"
+"\n"
+"می‌توانید فایل‌های عکس و ویدیو را از رسانه‌های اجتماعی محبوب دانلود کنید!"
+"\n"
+"\n"
+"Instagram\n"
+"TikTok\n"
+"Facebook\n"
+"YouTube\n"
+"Twitter\n"
+"Vkontakte\n"
+"SnapChat"
 
-#: tgbot/handlers/user.py:32
+#: tgbot/handlers/user.py:28
 msgid "Choose language"
 msgstr "زبان را انتخاب کنید"
 
-#: tgbot/handlers/user.py:38
+#: tgbot/handlers/user.py:34
 msgid "Language changed"
 msgstr "زبان تغییر کرد"
 
-#: tgbot/handlers/download_handler.py:25 tgbot/handlers/download_handler.py:48
-#: tgbot/handlers/download_handler.py:64 tgbot/handlers/download_handler.py:67
-#: tgbot/handlers/download_handler.py:71 tgbot/handlers/download_handler.py:74
-#: tgbot/handlers/download_handler.py:98
-msgid ""
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
-"fast and easy</b>"
-msgstr "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>دانلود سریع و آسان</b>"
+#: tgbot/misc/set_bot_commands.py:8
+msgid "Restart bot"
+msgstr "ربات را دوباره راه اندازی کنید"
 
-#: tgbot/handlers/download_handler.py:30 tgbot/handlers/download_handler.py:118
-msgid ""
-"Media quality: {quality}\n"
-"\n"
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
-"fast and easy</b>"
-msgstr "کیفیت رسانه: {quality}\n\n<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>دانلود سریع و آسان</b>"
+#: tgbot/misc/set_bot_commands.py:9
+#, fuzzy
+msgid "Change language"
+msgstr "زبان را انتخاب کنید"
 
-#: tgbot/handlers/download_handler.py:33 tgbot/handlers/download_handler.py:50
-#: tgbot/handlers/download_handler.py:69 tgbot/handlers/download_handler.py:101
-#: tgbot/handlers/download_handler.py:120
-msgid ""
-"Size of media is too large but you can download it from <a "
-"href='{url}'>link</a>"
-msgstr "اندازه رسانه خیلی بزرگ است اما می‌توانید آن را از <a href='{url}'>پیوند</a> دانلود کنید"
+#~ msgid "✅ Subscribed"
+#~ msgstr "✅ من مشترک شدم"
 
-#: tgbot/handlers/download_handler.py:39 tgbot/handlers/download_handler.py:54
-#: tgbot/handlers/download_handler.py:77 tgbot/handlers/download_handler.py:89
-#: tgbot/handlers/download_handler.py:108
-#: tgbot/handlers/download_handler.py:124
-msgid "Something went wrong, try again."
-msgstr ".یه چیزی اشتباه شد دوباره تلاش کن"
+#~ msgid "Please, subscribe to the following channels to use bot."
+#~ msgstr "لطفا برای استفاده از ربات در کانال های زیر مشترک شوید"
 
-#: tgbot/keyboards/inline.py:30
-msgid "✅ Subscribed"
-msgstr "✅ من مشترک شدم"
+#~ msgid "Your limit for today is over."
+#~ msgstr "محدودیت امروز شما تمام شده است"
 
-#: tgbot/middlewares/check.py:52 tgbot/middlewares/check.py:89
-msgid "Please, subscribe to the following channels to use bot."
-msgstr "لطفا برای استفاده از ربات در کانال های زیر مشترک شوید"
+#~ msgid "start"
+#~ msgstr ""
 
-#: tgbot/middlewares/check.py:95
-msgid "Your limit for today is over."
-msgstr "محدودیت امروز شما تمام شده است"
+#~ msgid "lang"
+#~ msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-04 16:42+0500\n"
+"POT-Creation-Date: 2022-10-11 12:12+0500\n"
 "PO-Revision-Date: 2022-10-04 16:43+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ko\n"
@@ -18,7 +18,46 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: tgbot/handlers/user.py:28 tgbot/middlewares/check.py:50
+#: tgbot/handlers/download_handler.py:25 tgbot/handlers/download_handler.py:48
+#: tgbot/handlers/download_handler.py:65 tgbot/handlers/download_handler.py:68
+#: tgbot/handlers/download_handler.py:72 tgbot/handlers/download_handler.py:75
+#: tgbot/handlers/download_handler.py:86 tgbot/handlers/download_handler.py:87
+#: tgbot/handlers/download_handler.py:99
+msgid ""
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
+"fast and easy</b>"
+msgstr ""
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>빠르고 쉬운 "
+"다운로드</b>"
+
+#: tgbot/handlers/download_handler.py:30 tgbot/handlers/download_handler.py:119
+msgid ""
+"Media quality: {quality}\n"
+"\n"
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
+"fast and easy</b>"
+msgstr ""
+"미디어 품질: {quality}\n"
+"\n"
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>빠르고 쉬운 "
+"다운로드</b>"
+
+#: tgbot/handlers/download_handler.py:33 tgbot/handlers/download_handler.py:51
+#: tgbot/handlers/download_handler.py:70 tgbot/handlers/download_handler.py:102
+#: tgbot/handlers/download_handler.py:121
+msgid ""
+"Size of media is too large but you can download it from <a "
+"href='{url}'>link</a>"
+msgstr "미디어 크기가 너무 크지만 <a href='{url}'>링크</a>에서 다운로드할 수 있습니다."
+
+#: tgbot/handlers/download_handler.py:38 tgbot/handlers/download_handler.py:55
+#: tgbot/handlers/download_handler.py:78 tgbot/handlers/download_handler.py:90
+#: tgbot/handlers/download_handler.py:109
+#: tgbot/handlers/download_handler.py:125
+msgid "Something went wrong, try again."
+msgstr "문제가 발생했습니다. 다시 시도해 주세요."
+
+#: tgbot/handlers/user.py:25
 msgid ""
 "<b>Send a link and get your media!</b>\n"
 "\n"
@@ -31,57 +70,48 @@ msgid ""
 "Twitter\n"
 "Vkontakte\n"
 "SnapChat"
-msgstr "<b>링크를 보내고 미디어를 받으세요!</b>\n\n인기 있는 소셜 미디어에서 사진 및 비디오 파일을 다운로드할 수 있습니다!\n\nInstagram\nTikTok\nFacebook\nYouTube\nTwitter\nVkontakte\nSnapChat"
+msgstr ""
+"<b>링크를 보내고 미디어를 받으세요!</b>\n"
+"\n"
+"인기 있는 소셜 미디어에서 사진 및 비디오 파일을 다운로드할 수 있습니다!\n"
+"\n"
+"Instagram\n"
+"TikTok\n"
+"Facebook\n"
+"YouTube\n"
+"Twitter\n"
+"Vkontakte\n"
+"SnapChat"
 
-#: tgbot/handlers/user.py:32
+#: tgbot/handlers/user.py:28
 msgid "Choose language"
 msgstr "언어 선택"
 
-#: tgbot/handlers/user.py:38
+#: tgbot/handlers/user.py:34
 msgid "Language changed"
 msgstr "언어 변경됨"
 
-#: tgbot/handlers/download_handler.py:25 tgbot/handlers/download_handler.py:48
-#: tgbot/handlers/download_handler.py:64 tgbot/handlers/download_handler.py:67
-#: tgbot/handlers/download_handler.py:71 tgbot/handlers/download_handler.py:74
-#: tgbot/handlers/download_handler.py:98
-msgid ""
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
-"fast and easy</b>"
-msgstr "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>빠르고 쉬운 다운로드</b>"
+#: tgbot/misc/set_bot_commands.py:8
+msgid "Restart bot"
+msgstr "봇 다시 시작"
 
-#: tgbot/handlers/download_handler.py:30 tgbot/handlers/download_handler.py:118
-msgid ""
-"Media quality: {quality}\n"
-"\n"
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
-"fast and easy</b>"
-msgstr "미디어 품질: {quality}\n\n<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>빠르고 쉬운 다운로드</b>"
+#: tgbot/misc/set_bot_commands.py:9
+#, fuzzy
+msgid "Change language"
+msgstr "언어 선택"
 
-#: tgbot/handlers/download_handler.py:33 tgbot/handlers/download_handler.py:50
-#: tgbot/handlers/download_handler.py:69 tgbot/handlers/download_handler.py:101
-#: tgbot/handlers/download_handler.py:120
-msgid ""
-"Size of media is too large but you can download it from <a "
-"href='{url}'>link</a>"
-msgstr "미디어 크기가 너무 크지만 <a href='{url}'>링크</a>에서 다운로드할 수 있습니다."
+#~ msgid "✅ Subscribed"
+#~ msgstr "✅ 나는 구독했다"
 
-#: tgbot/handlers/download_handler.py:39 tgbot/handlers/download_handler.py:54
-#: tgbot/handlers/download_handler.py:77 tgbot/handlers/download_handler.py:89
-#: tgbot/handlers/download_handler.py:108
-#: tgbot/handlers/download_handler.py:124
-msgid "Something went wrong, try again."
-msgstr "문제가 발생했습니다. 다시 시도해 주세요."
+#~ msgid "Please, subscribe to the following channels to use bot."
+#~ msgstr "봇을 사용하려면 다음 채널을 구독하십시오."
 
-#: tgbot/keyboards/inline.py:30
-msgid "✅ Subscribed"
-msgstr "✅ 나는 구독했다"
+#~ msgid "Your limit for today is over."
+#~ msgstr "오늘의 한도는 끝났습니다."
 
-#: tgbot/middlewares/check.py:52 tgbot/middlewares/check.py:89
-msgid "Please, subscribe to the following channels to use bot."
-msgstr "봇을 사용하려면 다음 채널을 구독하십시오."
+#~ msgid "start"
+#~ msgstr ""
 
-#: tgbot/middlewares/check.py:95
-msgid "Your limit for today is over."
-msgstr "오늘의 한도는 끝났습니다."
+#~ msgid "lang"
+#~ msgstr ""
 
