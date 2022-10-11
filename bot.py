@@ -19,7 +19,6 @@ from tgbot.middlewares.environment import EnvironmentMiddleware
 from tgbot.middlewares.i18n import CustomI18nMiddleware
 from tgbot.middlewares.check import CheckSubscriptionMiddleware
 
-from tgbot.misc.set_bot_commands import set_default_commands
 from tgbot.services.db import db
 import aioschedule
 
@@ -43,7 +42,6 @@ def register_all_middlewares(dp, config):
     dp.setup_middleware(EnvironmentMiddleware(config=config))
     dp.setup_middleware(CustomI18nMiddleware(config=load_config(".env"), domain="savebot", path=LOCALES_DIR))
     
-    
 
 def register_all_filters(dp):
     dp.filters_factory.bind(AdminFilter)
@@ -64,8 +62,9 @@ async def main():
     config = load_config(".env")
 
     # Create private Bot API server endpoints wrapper
-    local_server = TelegramAPIServer.from_base('http://0.0.0.0:8081')
-    print(local_server)
+    local_server = TelegramAPIServer.from_base(config.tg_bot.base_url)
+
+    # bot config
     storage = RedisStorage2() if config.tg_bot.use_redis else MemoryStorage()
     bot = Bot(token=config.tg_bot.token, server=local_server, parse_mode='HTML')
     dp = Dispatcher(bot, storage=storage)
@@ -79,8 +78,6 @@ async def main():
     register_all_handlers(dp)
 
     asyncio.create_task(scheduler())
-
-    # await set_default_commands(bot)
     
     # await bot.log_out()
     # start
