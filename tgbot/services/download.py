@@ -72,7 +72,7 @@ async def download_video_from_tiktok(video_url):
     return response
 
 async def download_from_youtube(video_url):
-    items = dict()
+    items = list()
     url = "https://socialdownloader.p.rapidapi.com/api/youtube/video"
     
     headers = {
@@ -88,15 +88,12 @@ async def download_from_youtube(video_url):
                                  status=True,
                                  created_at=datetime.now())
         for item in res:
-            if ((item['type'] == "mp4 dash" or item['type'] == "mp4") and (item['no_audio'] == False) and (item['quality']=='360')):
-                items = item
-        
-        FILE_TO_SAVE_AS = f"tgbot/media/{response['body']['meta']['title']}.mp4"
-        resp = requests.get(items['url'])
-        with open(FILE_TO_SAVE_AS, "wb") as f:
-            f.write(resp.content)
-        
-        return {'hasError': response['hasError'], 'thumb': response['body']['thumb'], 'items': items, 'file':FILE_TO_SAVE_AS}
+            try:
+                if ((item['type'] == "mp4 dash" or item['type'] == "mp4") and  (item['no_audio'] == False and (item['quality']=='360' or item['quality']=='720'))):
+                    items.append(item)
+            except Exception as e:
+                print(e)
+        return {'hasError': response['hasError'], 'thumb': response['body']['thumb'], 'items': items}
     elif response['hasError']:
         await db.add_api_request(name='youtube',
                                  status=False,
