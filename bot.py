@@ -19,6 +19,7 @@ from tgbot.middlewares.environment import EnvironmentMiddleware
 from tgbot.middlewares.i18n import CustomI18nMiddleware
 from tgbot.middlewares.check import CheckSubscriptionMiddleware
 
+from tgbot.misc.set_bot_commands import set_default_commands
 from tgbot.services.db import db
 import aioschedule
 
@@ -78,6 +79,8 @@ async def main():
     register_all_handlers(dp)
 
     asyncio.create_task(scheduler())
+
+    await set_default_commands(bot)
     
     # await bot.log_out()
     # start
