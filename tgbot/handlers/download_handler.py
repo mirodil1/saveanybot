@@ -2,7 +2,9 @@ from cgitb import text
 from aiogram import Dispatcher
 from aiogram import types
 from aiogram.dispatcher import filters
-from tgbot.services.download import download_from_twitter, download_from_youtube, download_from_instagram, download_video_from_tiktok, download_from_facebook, download_from_vkontakte
+from tgbot.services.download import download_from_twitter, download_from_youtube, download_from_instagram, \
+                                    download_video_from_tiktok, download_from_facebook, download_from_vkontakte, \
+                                    download_from_pinterest
 from tgbot.middlewares.i18n import _
 from tgbot.services.db import db
 import os
@@ -13,7 +15,7 @@ TWITTER_REGEX = r'((?:https?:\/\/www\.)?twitter\.com\/)'
 VKONTAKTE_REGEX = r'((?:https?:\/\/www\.)?vkontakte\.com\/)'
 TIKTOK_REGEX = r'((?:https?:\/\/)?(?:www|m\.)?tiktok\.com\/)'
 FACEBOOK_REGEX = r'(?:https?:\/\/)?(?:www\.|web\.|m\.)?facebook\.com\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?'
-
+PINTEREST_REGEX = r'((?:https?:\/\/www\.)?pinterest\.com\/)'
 
 async def youtube_download_handler(message: types.Message):
     waiting_msg = await message.answer('🔍')
@@ -124,6 +126,28 @@ async def vk_download_handler(message: types.Message):
         await waiting_msg.delete()
         await message.answer(_("Something went wrong, try again."))
 
+async def pinterest_download_handler(message: types.Message):
+    waiting_msg = await message.answer('🔍')
+    video_url = message.text
+    result = await download_from_pinterest(video_url)
+    if result['success']:
+        await waiting_msg.delete()
+        if result['type'] == 'video':
+            try:
+                await message.answer_video(result['data']['url'], caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
+            except:
+                await message.answer(_("Size of media is too large but you can download it from <a href='{url}'>link</a>").format(url=result['data']['url']))
+        
+        elif result['type'] == 'image':
+            try:
+                await message.answer_photo(result['data']['url'], caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
+            except Exception as e:
+                print(e)
+        await db.consume_credits(telegram_id=message.from_user.id)
+    elif not result['success']:
+        await waiting_msg.delete()
+        await message.answer(_("Something went wrong, try again."))
+
 
 def register_download_handler(dp: Dispatcher):
     dp.register_message_handler(insta_download_handler, filters.Regexp(INSTA_REGEX))    
@@ -132,3 +156,4 @@ def register_download_handler(dp: Dispatcher):
     dp.register_message_handler(tiktok_download_handler, filters.Regexp(TIKTOK_REGEX))
     dp.register_message_handler(facebook_download_handler, filters.Regexp(FACEBOOK_REGEX))
     dp.register_message_handler(vk_download_handler, filters.Regexp(VKONTAKTE_REGEX))
+    dp.register_message_handler(pinterest_download_handler, filters.Regexp(PINTEREST_REGEX))

@@ -162,3 +162,27 @@ async def download_from_twitter(video_url):
                                  status=False,
                                  created_at=datetime.now())
         return {"hasError": True}
+
+
+async def download_from_pinterest(link):
+
+    url = "https://fastest-social-video-and-image-downloader.p.rapidapi.com/pinterest"
+
+    querystring = {"url":link}
+
+    headers = {
+        "X-RapidAPI-Key": config.misc.rapid_api_key,
+        "X-RapidAPI-Host": "fastest-social-video-and-image-downloader.p.rapidapi.com"
+    }
+
+    response = requests.request("GET", url, headers=headers, params=querystring).json()
+    if response['success']:
+        await db.add_api_request(name='pinterest',
+                                 status=True,
+                                 created_at=datetime.now())
+        return response
+    elif not response['success']:
+        await db.add_api_request(name='pinterest',
+                                 status=False,
+                                 created_at=datetime.now())
+        return response
