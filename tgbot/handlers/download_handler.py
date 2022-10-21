@@ -7,6 +7,7 @@ from tgbot.services.download import download_from_twitter, download_from_youtube
                                     download_from_pinterest
 from tgbot.middlewares.i18n import _
 from tgbot.services.db import db
+from tgbot.keyboards.inline import download_button
 import os
 
 YOUTUBE_REGEX = r'(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?'
@@ -32,7 +33,7 @@ async def youtube_download_handler(message: types.Message):
                 await message.answer_video(item['url'], caption=_("Media quality: {quality}\n\n<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>").format(quality=item['quality']))
             except:
                 try:
-                    await message.answer(_("Size of media is too large but you can download it from <a href='{url}'>link</a>").format(url=item['url']))
+                    await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(item['url']))
                 except:
                     pass
         await db.consume_credits(telegram_id=message.from_user.id)
@@ -50,7 +51,7 @@ async def twitter_download_handler(message: types.Message):
             await message.answer_video(file_path, caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
             os.remove(result['url'])
         except:
-            await message.answer(_("Size of media is too large but you can download it from <a href='{url}'>link</a>").format(url=result['url']))
+            await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(result['url']))
         await db.consume_credits(telegram_id=message.from_user.id)
     elif result['hasError']:
         await waiting_msg.delete()
@@ -69,7 +70,7 @@ async def insta_download_handler(message: types.Message):
             try:
                 await message.answer_video(result['media'], caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
             except:
-                await message.answer(_("Size of media is too large but you can download it from <a href='{url}'>link</a>").format(url=result['media']))
+                await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(result['url']))
         elif result['Type'] == 'Post-Image':
             await message.answer_photo(result['media'], caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
         elif result['Type'] == 'Carousel':
@@ -101,7 +102,7 @@ async def facebook_download_handler(message: types.Message):
             await message.answer_video(result['body']['video'], caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
         except:
             try:
-                await message.answer(_("Size of media is too large but you can download it from <a href='{url}'>link</a>").format(url=result['body']['video']))
+                await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(result['body']['video']))
             except:
                 pass
                 # await message.answer("Something went wrong, try again.")
@@ -120,7 +121,7 @@ async def vk_download_handler(message: types.Message):
             try:
                 await message.answer_video(video['url'], caption=_("Media quality: {quality}\n\n<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>").format(quality=video['quality']))
             except:
-                await message.answer(_("Size of media is too large but you can download it from <a href='{url}'>link</a>").format(url=video['url']))
+                await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(video['url']))
         await db.consume_credits(telegram_id=message.from_user.id)
     elif result['hasError']:
         await waiting_msg.delete()
@@ -136,7 +137,7 @@ async def pinterest_download_handler(message: types.Message):
             try:
                 await message.answer_video(result['data']['url'], caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
             except:
-                await message.answer(_("Size of media is too large but you can download it from <a href='{url}'>link</a>").format(url=result['data']['url']))
+                await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(result['data']['url']))
         
         elif result['type'] == 'image':
             try:
