@@ -117,3 +117,10 @@ for key, value in languages.items():
 
 
  
+async def download_button(url):
+
+    markup = InlineKeyboardMarkup(row_width=1)
+    markup.insert(
+        InlineKeyboardButton(text=_("Download"), url=url)
+    )
+    return markup
