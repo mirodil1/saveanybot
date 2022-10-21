@@ -7,55 +7,56 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-11 12:12+0500\n"
-"PO-Revision-Date: 2022-10-04 16:43+0500\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: tr\n"
+"POT-Creation-Date: 2022-10-20 13:33+0500\n"
+"PO-Revision-Date: 2022-10-20 15:40+0500\n"
+"Last-Translator: \n"
 "Language-Team: tr <LL@li.org>\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "Generated-By: Babel 2.9.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
-#: tgbot/handlers/download_handler.py:25 tgbot/handlers/download_handler.py:48
-#: tgbot/handlers/download_handler.py:65 tgbot/handlers/download_handler.py:68
-#: tgbot/handlers/download_handler.py:72 tgbot/handlers/download_handler.py:75
-#: tgbot/handlers/download_handler.py:86 tgbot/handlers/download_handler.py:87
-#: tgbot/handlers/download_handler.py:99
+#: tgbot/handlers/download_handler.py:28 tgbot/handlers/download_handler.py:51
+#: tgbot/handlers/download_handler.py:68 tgbot/handlers/download_handler.py:71
+#: tgbot/handlers/download_handler.py:75 tgbot/handlers/download_handler.py:78
+#: tgbot/handlers/download_handler.py:89 tgbot/handlers/download_handler.py:90
+#: tgbot/handlers/download_handler.py:102
+#: tgbot/handlers/download_handler.py:138
+#: tgbot/handlers/download_handler.py:144
 msgid ""
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
-"fast and easy</b>"
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast "
+"and easy</b>"
 msgstr ""
 "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Hızlı ve "
 "kolay indirin</b>"
 
-#: tgbot/handlers/download_handler.py:30 tgbot/handlers/download_handler.py:119
+#: tgbot/handlers/download_handler.py:33 tgbot/handlers/download_handler.py:122
 msgid ""
 "Media quality: {quality}\n"
 "\n"
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
-"fast and easy</b>"
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast "
+"and easy</b>"
 msgstr ""
 "Medya kalitesi: {quality}\n"
 "\n"
 "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Hızlı ve "
 "kolay indirin</b>"
 
-#: tgbot/handlers/download_handler.py:33 tgbot/handlers/download_handler.py:51
-#: tgbot/handlers/download_handler.py:70 tgbot/handlers/download_handler.py:102
-#: tgbot/handlers/download_handler.py:121
-msgid ""
-"Size of media is too large but you can download it from <a "
-"href='{url}'>link</a>"
-msgstr ""
-"Medya boyutu çok büyük ama <a href='{url}'>bağlantıdan</a> "
-"indirebilirsiniz."
+#: tgbot/handlers/download_handler.py:36 tgbot/handlers/download_handler.py:54
+#: tgbot/handlers/download_handler.py:73 tgbot/handlers/download_handler.py:105
+#: tgbot/handlers/download_handler.py:124
+#: tgbot/handlers/download_handler.py:140
+msgid "Size of media is too large but you can download it from link"
+msgstr "Medya boyutu çok büyük ama bağlantıdan indirebilirsiniz"
 
-#: tgbot/handlers/download_handler.py:38 tgbot/handlers/download_handler.py:55
-#: tgbot/handlers/download_handler.py:78 tgbot/handlers/download_handler.py:90
-#: tgbot/handlers/download_handler.py:109
-#: tgbot/handlers/download_handler.py:125
+#: tgbot/handlers/download_handler.py:41 tgbot/handlers/download_handler.py:58
+#: tgbot/handlers/download_handler.py:81 tgbot/handlers/download_handler.py:93
+#: tgbot/handlers/download_handler.py:112
+#: tgbot/handlers/download_handler.py:128
+#: tgbot/handlers/download_handler.py:150
 msgid "Something went wrong, try again."
 msgstr "Bir şeyler ters gitti, tekrar deneyin."
 
@@ -93,12 +94,15 @@ msgstr "Dil seçiniz"
 msgid "Language changed"
 msgstr "Dil değişti"
 
+#: tgbot/keyboards/inline.py:124
+msgid "Download"
+msgstr "İndirmek"
+
 #: tgbot/misc/set_bot_commands.py:8
 msgid "Restart bot"
 msgstr "Botu yeniden başlat"
 
 #: tgbot/misc/set_bot_commands.py:9
-#, fuzzy
 msgid "Change language"
 msgstr "Dil seçiniz"
 
@@ -110,10 +114,3 @@ msgstr "Dil seçiniz"
 
 #~ msgid "Your limit for today is over."
 #~ msgstr "Bugünkü limitiniz doldu."
-
-#~ msgid "start"
-#~ msgstr ""
-
-#~ msgid "lang"
-#~ msgstr ""
-

@@ -7,53 +7,56 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-11 12:12+0500\n"
-"PO-Revision-Date: 2022-10-04 16:43+0500\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: zh\n"
+"POT-Creation-Date: 2022-10-20 13:33+0500\n"
+"PO-Revision-Date: 2022-10-20 15:41+0500\n"
+"Last-Translator: \n"
 "Language-Team: zh <LL@li.org>\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Language: zh\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "Generated-By: Babel 2.9.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
-#: tgbot/handlers/download_handler.py:25 tgbot/handlers/download_handler.py:48
-#: tgbot/handlers/download_handler.py:65 tgbot/handlers/download_handler.py:68
-#: tgbot/handlers/download_handler.py:72 tgbot/handlers/download_handler.py:75
-#: tgbot/handlers/download_handler.py:86 tgbot/handlers/download_handler.py:87
-#: tgbot/handlers/download_handler.py:99
+#: tgbot/handlers/download_handler.py:28 tgbot/handlers/download_handler.py:51
+#: tgbot/handlers/download_handler.py:68 tgbot/handlers/download_handler.py:71
+#: tgbot/handlers/download_handler.py:75 tgbot/handlers/download_handler.py:78
+#: tgbot/handlers/download_handler.py:89 tgbot/handlers/download_handler.py:90
+#: tgbot/handlers/download_handler.py:102
+#: tgbot/handlers/download_handler.py:138
+#: tgbot/handlers/download_handler.py:144
 msgid ""
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
-"fast and easy</b>"
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast "
+"and easy</b>"
 msgstr ""
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - "
-"<b>快速輕鬆地下載</b>"
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>快速輕鬆地下載"
+"</b>"
 
-#: tgbot/handlers/download_handler.py:30 tgbot/handlers/download_handler.py:119
+#: tgbot/handlers/download_handler.py:33 tgbot/handlers/download_handler.py:122
 msgid ""
 "Media quality: {quality}\n"
 "\n"
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download "
-"fast and easy</b>"
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast "
+"and easy</b>"
 msgstr ""
 "媒體質量：{quality}\n"
 "\n"
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - "
-"<b>快速輕鬆地下載</b>"
+"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>快速輕鬆地下載"
+"</b>"
 
-#: tgbot/handlers/download_handler.py:33 tgbot/handlers/download_handler.py:51
-#: tgbot/handlers/download_handler.py:70 tgbot/handlers/download_handler.py:102
-#: tgbot/handlers/download_handler.py:121
-msgid ""
-"Size of media is too large but you can download it from <a "
-"href='{url}'>link</a>"
-msgstr "媒體文件太大，但您可以從 <a href='{url}'>link</a> 下載"
+#: tgbot/handlers/download_handler.py:36 tgbot/handlers/download_handler.py:54
+#: tgbot/handlers/download_handler.py:73 tgbot/handlers/download_handler.py:105
+#: tgbot/handlers/download_handler.py:124
+#: tgbot/handlers/download_handler.py:140
+msgid "Size of media is too large but you can download it from link"
+msgstr "媒體尺寸太大，但您可以從鏈接下載"
 
-#: tgbot/handlers/download_handler.py:38 tgbot/handlers/download_handler.py:55
-#: tgbot/handlers/download_handler.py:78 tgbot/handlers/download_handler.py:90
-#: tgbot/handlers/download_handler.py:109
-#: tgbot/handlers/download_handler.py:125
+#: tgbot/handlers/download_handler.py:41 tgbot/handlers/download_handler.py:58
+#: tgbot/handlers/download_handler.py:81 tgbot/handlers/download_handler.py:93
+#: tgbot/handlers/download_handler.py:112
+#: tgbot/handlers/download_handler.py:128
+#: tgbot/handlers/download_handler.py:150
 msgid "Something went wrong, try again."
 msgstr "出了點問題，再試一次。"
 
@@ -91,12 +94,15 @@ msgstr "選擇語言"
 msgid "Language changed"
 msgstr "語言已更改"
 
+#: tgbot/keyboards/inline.py:124
+msgid "Download"
+msgstr "下載"
+
 #: tgbot/misc/set_bot_commands.py:8
 msgid "Restart bot"
 msgstr "重啟機器人"
 
 #: tgbot/misc/set_bot_commands.py:9
-#, fuzzy
 msgid "Change language"
 msgstr "選擇語言"
 
@@ -108,10 +114,3 @@ msgstr "選擇語言"
 
 #~ msgid "Your limit for today is over."
 #~ msgstr "你今天的限額已經結束。"
-
-#~ msgid "start"
-#~ msgstr ""
-
-#~ msgid "lang"
-#~ msgstr ""
-
