@@ -63,11 +63,11 @@ async def main():
     config = load_config(".env")
 
     # Create private Bot API server endpoints wrapper
-    local_server = TelegramAPIServer.from_base(config.tg_bot.base_url)
+    # local_server = TelegramAPIServer.from_base(config.tg_bot.base_url)
 
     # bot config
     storage = RedisStorage2() if config.tg_bot.use_redis else MemoryStorage()
-    bot = Bot(token=config.tg_bot.token, server=local_server, parse_mode='HTML')
+    bot = Bot(token=config.tg_bot.token, parse_mode='HTML')
     dp = Dispatcher(bot, storage=storage)
     bot['config'] = config
 
