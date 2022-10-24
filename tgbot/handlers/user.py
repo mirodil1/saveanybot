@@ -6,15 +6,10 @@ from aiogram import types
 from aiogram.types import Message
 from aiogram.types import InputFile
 from tgbot.middlewares.i18n import _
-import asyncpg
 
 from tgbot.keyboards.inline import lang_button, response_callback_lang
 from tgbot.services.db import db
-from aiogram.utils.deep_linking import get_start_link
 
-from pathlib import Path
-
-import youtube_dl
 async def user_start(message: Message):
     args = message.get_args()
     if args:
@@ -33,6 +28,7 @@ async def change_langueage(call: types.CallbackQuery, callback_data: dict):
     await db.set_language_code(language_code=lang_code, telegram_id=user_id)
     await call.message.edit_text(_("Language changed"))
     await call.answer(cache_time=10)
+
 
 def register_user(dp: Dispatcher):
     dp.register_message_handler(user_start, commands=["start"], state="*")

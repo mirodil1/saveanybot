@@ -1,10 +1,10 @@
-from typing import Any, Tuple, Dict, Optional
+from typing import Any, Tuple, Optional
 from aiogram.contrib.middlewares.i18n import I18nMiddleware
 from aiogram import types
 from pathlib import Path
 from babel import Locale
 from tgbot.services.db import db
-import asyncpg
+
 
 class CustomI18nMiddleware(I18nMiddleware):
     def __init__(self, domain, path=None, **kwargs):
@@ -16,6 +16,7 @@ class CustomI18nMiddleware(I18nMiddleware):
     async def get_user_locale(self, action: str, args: Tuple[Any]) -> Optional[str]:
         user: Optional[types.User] = types.User.get_current()
         locale: Optional[Locale] = user.locale if user else None
+
         try:
             user = await db.select_user(telegram_id = user['id'])
             language = user['language_code']

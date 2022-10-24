@@ -113,9 +113,6 @@ lang_button = InlineKeyboardMarkup(row_width=2)
 for key, value in languages.items():
     lang_button.insert(InlineKeyboardButton(text=key, callback_data=response_callback_lang.new(code=value)))
 
-
-
-
  
 async def download_button(url):
 
