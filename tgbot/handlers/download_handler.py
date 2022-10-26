@@ -25,12 +25,12 @@ async def youtube_download_handler(message: types.Message):
     if not result['hasError']:
         await waiting_msg.delete()
         try:
-            await message.answer_photo(result['thumb'], caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
+            await message.answer_photo(result['thumb'], caption=_("@SaveAnyBot — Save Any Media!"))
         except Exception as e:
             print(e)
         for item in result['items']:
             try:
-                await message.answer_video(item['url'], caption=_("Media quality: {quality}\n\n<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>").format(quality=item['quality']))
+                await message.answer_video(item['url'], caption=_("@SaveAnyBot — Save Any Media!"))
             except:
                 try:
                     await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(item['url']))
@@ -48,7 +48,7 @@ async def twitter_download_handler(message: types.Message):
         await waiting_msg.delete()
         try:
             file_path = types.InputFile(path_or_bytesio=result['url'])
-            await message.answer_video(file_path, caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
+            await message.answer_video(file_path, caption=_("@SaveAnyBot — Save Any Media!"))
             os.remove(result['url'])
         except:
             await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(result['url']))
@@ -65,17 +65,17 @@ async def insta_download_handler(message: types.Message):
         await waiting_msg.delete()
         if type(result) == list:
             if result[0]['type'] == 'Video':
-                await message.answer_video(result[0]['media'], caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
+                await message.answer_video(result[0]['media'], caption=_("@SaveAnyBot — Save Any Media!"))
         elif result['Type'] == 'Post-Video':
             try:
-                await message.answer_video(result['media'], caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
+                await message.answer_video(result['media'], caption=_("@SaveAnyBot — Save Any Media!"))
             except:
                 await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(result['url']))
         elif result['Type'] == 'Post-Image':
-            await message.answer_photo(result['media'], caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
+            await message.answer_photo(result['media'], caption=_("@SaveAnyBot — Save Any Media!"))
         elif result['Type'] == 'Carousel':
             for m in result['media']:
-                await message.answer_video(m, caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
+                await message.answer_video(m, caption=_("@SaveAnyBot — Save Any Media!"))
         await db.consume_credits(telegram_id=message.from_user.id)
     except:
         await message.answer(_("Something went wrong, try again."))
@@ -86,8 +86,8 @@ async def tiktok_download_handler(message: types.Message):
     try:
         result = await download_video_from_tiktok(video_url)
         await waiting_msg.delete()
-        await message.answer_video(result['video'][0], caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
-        await message.answer_audio(result['music'][0], caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
+        await message.answer_video(result['video'][0], caption=_("@SaveAnyBot — Save Any Media!"))
+        await message.answer_audio(result['music'][0], caption=_("@SaveAnyBot — Save Any Media!"))
         await db.consume_credits(telegram_id=message.from_user.id)
     except:
         await message.answer(_("Something went wrong, try again."))
@@ -99,7 +99,7 @@ async def facebook_download_handler(message: types.Message):
     if not result['hasError']:
         try:
             await waiting_msg.delete()
-            await message.answer_video(result['body']['video'], caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
+            await message.answer_video(result['body']['video'], caption=_("@SaveAnyBot — Save Any Media!"))
         except:
             try:
                 await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(result['body']['video']))
@@ -119,7 +119,7 @@ async def vk_download_handler(message: types.Message):
         await waiting_msg.delete()
         for video in result['videos']:
             try:
-                await message.answer_video(video['url'], caption=_("Media quality: {quality}\n\n<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>").format(quality=video['quality']))
+                await message.answer_video(video['url'], caption=_("@SaveAnyBot — Save Any Media!"))
             except:
                 await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(video['url']))
         await db.consume_credits(telegram_id=message.from_user.id)
@@ -135,13 +135,13 @@ async def pinterest_download_handler(message: types.Message):
         await waiting_msg.delete()
         if result['type'] == 'video':
             try:
-                await message.answer_video(result['data']['url'], caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
+                await message.answer_video(result['data']['url'], caption=_("@SaveAnyBot — Save Any Media!"))
             except:
                 await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(result['data']['url']))
         
         elif result['type'] == 'image':
             try:
-                await message.answer_photo(result['data']['url'], caption=_("<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"))
+                await message.answer_photo(result['data']['url'], caption=_("@SaveAnyBot — Save Any Media!"))
             except Exception as e:
                 print(e)
         await db.consume_credits(telegram_id=message.from_user.id)
