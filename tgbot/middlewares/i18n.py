@@ -1,3 +1,4 @@
+from ast import arg
 from typing import Any, Tuple, Optional
 from aiogram.contrib.middlewares.i18n import I18nMiddleware
 from aiogram import types
@@ -16,7 +17,14 @@ class CustomI18nMiddleware(I18nMiddleware):
     async def get_user_locale(self, action: str, args: Tuple[Any]) -> Optional[str]:
         user: Optional[types.User] = types.User.get_current()
         locale: Optional[Locale] = user.locale if user else None
+        _, data = args
 
+        # changed language code
+        try:
+            lang_code = _['data'].split(":")[1]
+            await db.set_language_code(language_code=lang_code, telegram_id=user['id'])
+        except:
+            pass
         try:
             user = await db.select_user(telegram_id = user['id'])
             language = user['language_code']
@@ -26,7 +34,6 @@ class CustomI18nMiddleware(I18nMiddleware):
             return language
         # return self.default
         elif locale and locale.language in self.locales:
-            *_, data = args
             language = data['locale'] = locale.language
             return language
         return self.default

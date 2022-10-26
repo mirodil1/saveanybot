@@ -21,6 +21,7 @@ class TgBot:
 @dataclass
 class Miscellaneous:
     rapid_api_key: str
+    rapid_api_key_pinterest: str
     other_params: str = None
 
 
@@ -49,6 +50,7 @@ def load_config(path: str = None):
             database=env.str('DB_NAME')
         ),
         misc=Miscellaneous(
-            rapid_api_key=env.str('RAPID_API_KEY')
+            rapid_api_key=env.str('RAPID_API_KEY'),
+            rapid_api_key_pinterest=env.str('RAPID_API_KEY_PINTEREST')
         )
     )

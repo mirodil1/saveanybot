@@ -171,7 +171,7 @@ async def download_from_pinterest(link):
     querystring = {"url":link}
 
     headers = {
-        "X-RapidAPI-Key": config.misc.rapid_api_key,
+        "X-RapidAPI-Key": config.misc.rapid_api_key_pinterest,
         "X-RapidAPI-Host": "fastest-social-video-and-image-downloader.p.rapidapi.com"
     }
 

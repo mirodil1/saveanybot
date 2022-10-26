@@ -23,9 +23,6 @@ async def lang_command(message: Message):
     await message.answer(_("Choose language"), reply_markup=lang_button)
 
 async def change_langueage(call: types.CallbackQuery, callback_data: dict):
-    user_id = call.from_user.id
-    lang_code = callback_data.get('code')
-    await db.set_language_code(language_code=lang_code, telegram_id=user_id)
     await call.message.edit_text(_("Language changed"))
     await call.answer(cache_time=10)
 
