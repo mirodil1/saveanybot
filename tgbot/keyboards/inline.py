@@ -114,9 +114,29 @@ for key, value in languages.items():
     lang_button.insert(InlineKeyboardButton(text=key, callback_data=response_callback_lang.new(code=value)))
 
  
+async def download_youtube_button(items):
+
+    markup = InlineKeyboardMarkup(row_width=1)
+
+    for item in items:
+        if "filesize" in item:
+            if item['filesize'] > 20000000:
+                markup.insert(
+                    InlineKeyboardButton(text=_("Download {type} - {quality}p").format(type=item['type'], quality=item['quality']), url=item['url'])
+                )
+        else:
+            markup.insert(
+                    InlineKeyboardButton(text=_("Download {type} - {quality}p").format(type=item['type'], quality=item['quality']), url=item['url'])
+                )
+    return markup
+
+
+ 
 async def download_button(url):
 
     markup = InlineKeyboardMarkup(row_width=1)
+
+
     markup.insert(
         InlineKeyboardButton(text=_("Download"), url=url)
     )
