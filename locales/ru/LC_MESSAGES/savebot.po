@@ -7,60 +7,46 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-20 13:33+0500\n"
-"PO-Revision-Date: 2022-10-20 15:33+0500\n"
+"POT-Creation-Date: 2022-10-27 11:20+0500\n"
+"PO-Revision-Date: 2022-10-27 11:38+0500\n"
 "Last-Translator: \n"
 "Language-Team: ru <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "Generated-By: Babel 2.9.1\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.1\n"
 
-#: tgbot/handlers/download_handler.py:28 tgbot/handlers/download_handler.py:51
-#: tgbot/handlers/download_handler.py:68 tgbot/handlers/download_handler.py:71
-#: tgbot/handlers/download_handler.py:75 tgbot/handlers/download_handler.py:78
-#: tgbot/handlers/download_handler.py:89 tgbot/handlers/download_handler.py:90
-#: tgbot/handlers/download_handler.py:102 tgbot/handlers/download_handler.py:138
+#: tgbot/handlers/download_handler.py:28 tgbot/handlers/download_handler.py:33
+#: tgbot/handlers/download_handler.py:51 tgbot/handlers/download_handler.py:68
+#: tgbot/handlers/download_handler.py:71 tgbot/handlers/download_handler.py:75
+#: tgbot/handlers/download_handler.py:78 tgbot/handlers/download_handler.py:89
+#: tgbot/handlers/download_handler.py:90 tgbot/handlers/download_handler.py:102
+#: tgbot/handlers/download_handler.py:122
+#: tgbot/handlers/download_handler.py:138
 #: tgbot/handlers/download_handler.py:144
-msgid ""
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast "
-"and easy</b>"
+msgid "@SaveAnyBot — Save Any Media!"
 msgstr ""
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Скачайте быстро "
-"и легко</b>"
-
-#: tgbot/handlers/download_handler.py:33 tgbot/handlers/download_handler.py:122
-msgid ""
-"Media quality: {quality}\n"
-"\n"
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast "
-"and easy</b>"
-msgstr ""
-"Качество медиа: {quality}\n"
-"\n"
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Скачайте быстро "
-"и легко</b>"
 
 #: tgbot/handlers/download_handler.py:36 tgbot/handlers/download_handler.py:54
 #: tgbot/handlers/download_handler.py:73 tgbot/handlers/download_handler.py:105
-#: tgbot/handlers/download_handler.py:124 tgbot/handlers/download_handler.py:140
+#: tgbot/handlers/download_handler.py:124
+#: tgbot/handlers/download_handler.py:140
 msgid "Size of media is too large but you can download it from link"
 msgstr "Размер медиа слишком большой, но вы можете скачать его по ссылке"
 
-#: tgbot/handlers/download_handler.py:41 tgbot/handlers/download_handler.py:58
-#: tgbot/handlers/download_handler.py:81 tgbot/handlers/download_handler.py:93
-#: tgbot/handlers/download_handler.py:112 tgbot/handlers/download_handler.py:128
+#: tgbot/handlers/download_handler.py:38 tgbot/handlers/download_handler.py:41
+#: tgbot/handlers/download_handler.py:58 tgbot/handlers/download_handler.py:81
+#: tgbot/handlers/download_handler.py:93 tgbot/handlers/download_handler.py:112
+#: tgbot/handlers/download_handler.py:128
 #: tgbot/handlers/download_handler.py:150
 msgid "Something went wrong, try again."
 msgstr "Что-то пошло не так, попробуйте еще раз."
 
-#: tgbot/handlers/user.py:25
-msgid ""
-"<b>Send a link and get your media!</b>\n"
+#: tgbot/handlers/user.py:20
+msgid "<b>Send a link and get your media!</b>\n"
 "\n"
 "You can download photo and video files from popular social media!\n"
 "\n"
@@ -69,11 +55,8 @@ msgid ""
 "Facebook\n"
 "YouTube\n"
 "Twitter\n"
-"Vkontakte\n"
-"SnapChat"
-msgstr ""
-"<b>Отправьте ссылку и получите свои медиафайлы!</b>\n"
-"\n"
+"Pinterest"
+msgstr "<b>Отправьте ссылку и получите свои медиафайлы!</b>\n"
 "Вы можете скачать фото и видео файлы из популярных социальных сетей!\n"
 "\n"
 "Instagram\n"
@@ -81,18 +64,21 @@ msgstr ""
 "Facebook\n"
 "YouTube\n"
 "Twitter\n"
-"Vkontakte\n"
-"SnapChat"
+"Pinterest"
 
-#: tgbot/handlers/user.py:28
+#: tgbot/handlers/user.py:23
 msgid "Choose language"
 msgstr "Выберите язык"
 
-#: tgbot/handlers/user.py:34
+#: tgbot/handlers/user.py:26
 msgid "Language changed"
 msgstr "Язык изменен"
 
-#: tgbot/keyboards/inline.py:124
+#: tgbot/keyboards/inline.py:125 tgbot/keyboards/inline.py:129
+msgid "Download {type} - {quality}p"
+msgstr "Скачать {type} - {quality}p"
+
+#: tgbot/keyboards/inline.py:141
 msgid "Download"
 msgstr "Скачать"
 
@@ -112,3 +98,25 @@ msgstr "Выберите язык"
 
 #~ msgid "Your limit for today is over."
 #~ msgstr "Ваш лимит на сегодня исчерпан."
+
+#~ msgid ""
+#~ "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA "
+#~ "BOT⬇️</a> - <b>Download fast and "
+#~ "easy</b>"
+#~ msgstr ""
+#~ "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA "
+#~ "BOT⬇️</a> - <b>Скачайте быстро и "
+#~ "легко</b>"
+
+#~ msgid ""
+#~ "Media quality: {quality}\n"
+#~ "\n"
+#~ "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA "
+#~ "BOT⬇️</a> - <b>Download fast and "
+#~ "easy</b>"
+#~ msgstr ""
+#~ "Качество медиа: {quality}\n"
+#~ "\n"
+#~ "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA "
+#~ "BOT⬇️</a> - <b>Скачайте быстро и "
+#~ "легко</b>"

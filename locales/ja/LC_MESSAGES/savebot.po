@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-20 13:33+0500\n"
-"PO-Revision-Date: 2022-10-20 15:39+0500\n"
+"POT-Creation-Date: 2022-10-27 11:20+0500\n"
+"PO-Revision-Date: 2022-10-27 11:45+0500\n"
 "Last-Translator: \n"
 "Language-Team: ja <LL@li.org>\n"
 "Language: ja\n"
@@ -17,33 +17,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Generated-By: Babel 2.9.1\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.1\n"
 
-#: tgbot/handlers/download_handler.py:28 tgbot/handlers/download_handler.py:51
-#: tgbot/handlers/download_handler.py:68 tgbot/handlers/download_handler.py:71
-#: tgbot/handlers/download_handler.py:75 tgbot/handlers/download_handler.py:78
-#: tgbot/handlers/download_handler.py:89 tgbot/handlers/download_handler.py:90
-#: tgbot/handlers/download_handler.py:102
+#: tgbot/handlers/download_handler.py:28 tgbot/handlers/download_handler.py:33
+#: tgbot/handlers/download_handler.py:51 tgbot/handlers/download_handler.py:68
+#: tgbot/handlers/download_handler.py:71 tgbot/handlers/download_handler.py:75
+#: tgbot/handlers/download_handler.py:78 tgbot/handlers/download_handler.py:89
+#: tgbot/handlers/download_handler.py:90 tgbot/handlers/download_handler.py:102
+#: tgbot/handlers/download_handler.py:122
 #: tgbot/handlers/download_handler.py:138
 #: tgbot/handlers/download_handler.py:144
-msgid ""
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast "
-"and easy</b>"
+msgid "@SaveAnyBot — Save Any Media!"
 msgstr ""
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>すばやく簡単に"
-"ダウンロード</b>"
-
-#: tgbot/handlers/download_handler.py:33 tgbot/handlers/download_handler.py:122
-msgid ""
-"Media quality: {quality}\n"
-"\n"
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast "
-"and easy</b>"
-msgstr ""
-"メディア品質: {quality}\n"
-"\n"
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>すばやく簡単に"
-"ダウンロード</b>"
 
 #: tgbot/handlers/download_handler.py:36 tgbot/handlers/download_handler.py:54
 #: tgbot/handlers/download_handler.py:73 tgbot/handlers/download_handler.py:105
@@ -52,17 +37,16 @@ msgstr ""
 msgid "Size of media is too large but you can download it from link"
 msgstr "メディアのサイズが大きすぎますが、リンクからダウンロードできます"
 
-#: tgbot/handlers/download_handler.py:41 tgbot/handlers/download_handler.py:58
-#: tgbot/handlers/download_handler.py:81 tgbot/handlers/download_handler.py:93
-#: tgbot/handlers/download_handler.py:112
+#: tgbot/handlers/download_handler.py:38 tgbot/handlers/download_handler.py:41
+#: tgbot/handlers/download_handler.py:58 tgbot/handlers/download_handler.py:81
+#: tgbot/handlers/download_handler.py:93 tgbot/handlers/download_handler.py:112
 #: tgbot/handlers/download_handler.py:128
 #: tgbot/handlers/download_handler.py:150
 msgid "Something went wrong, try again."
 msgstr "エラーが発生しました。もう一度お試しください。"
 
-#: tgbot/handlers/user.py:25
-msgid ""
-"<b>Send a link and get your media!</b>\n"
+#: tgbot/handlers/user.py:20
+msgid "<b>Send a link and get your media!</b>\n"
 "\n"
 "You can download photo and video files from popular social media!\n"
 "\n"
@@ -71,10 +55,8 @@ msgid ""
 "Facebook\n"
 "YouTube\n"
 "Twitter\n"
-"Vkontakte\n"
-"SnapChat"
-msgstr ""
-"<b>リンクを送信してメディアを入手しましょう!</b>\n"
+"Pinterest"
+msgstr "<b>リンクを送信してメディアを入手しましょう!</b>\n"
 "\n"
 "人気のソーシャル メディアから写真やビデオ ファイルをダウンロードできます!\n"
 "\n"
@@ -83,18 +65,21 @@ msgstr ""
 "Facebook\n"
 "YouTube\n"
 "Twitter\n"
-"Vkontakte\n"
-"SnapChat"
+"Pinterest"
 
-#: tgbot/handlers/user.py:28
+#: tgbot/handlers/user.py:23
 msgid "Choose language"
 msgstr "言語を選択"
 
-#: tgbot/handlers/user.py:34
+#: tgbot/handlers/user.py:26
 msgid "Language changed"
 msgstr "言語が変更されました"
 
-#: tgbot/keyboards/inline.py:124
+#: tgbot/keyboards/inline.py:125 tgbot/keyboards/inline.py:129
+msgid "Download {type} - {quality}p"
+msgstr "ダウンロード {type} - {quality}p"
+
+#: tgbot/keyboards/inline.py:141
 msgid "Download"
 msgstr "ダウンロード"
 
@@ -114,3 +99,23 @@ msgstr "言語を選択"
 
 #~ msgid "Your limit for today is over."
 #~ msgstr "今日の制限を超えています。"
+
+#~ msgid ""
+#~ "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA "
+#~ "BOT⬇️</a> - <b>Download fast and "
+#~ "easy</b>"
+#~ msgstr ""
+#~ "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA "
+#~ "BOT⬇️</a> - <b>すばやく簡単にダウンロード</b>"
+
+#~ msgid ""
+#~ "Media quality: {quality}\n"
+#~ "\n"
+#~ "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA "
+#~ "BOT⬇️</a> - <b>Download fast and "
+#~ "easy</b>"
+#~ msgstr ""
+#~ "メディア品質: {quality}\n"
+#~ "\n"
+#~ "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA "
+#~ "BOT⬇️</a> - <b>すばやく簡単にダウンロード</b>"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-20 13:33+0500\n"
-"PO-Revision-Date: 2022-10-20 15:27+0500\n"
+"POT-Creation-Date: 2022-10-27 11:20+0500\n"
+"PO-Revision-Date: 2022-10-27 11:42+0500\n"
 "Last-Translator: \n"
 "Language-Team: uz <LL@li.org>\n"
 "Language: uz\n"
@@ -17,33 +17,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.9.1\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.1\n"
 
-#: tgbot/handlers/download_handler.py:28 tgbot/handlers/download_handler.py:51
-#: tgbot/handlers/download_handler.py:68 tgbot/handlers/download_handler.py:71
-#: tgbot/handlers/download_handler.py:75 tgbot/handlers/download_handler.py:78
-#: tgbot/handlers/download_handler.py:89 tgbot/handlers/download_handler.py:90
-#: tgbot/handlers/download_handler.py:102
+#: tgbot/handlers/download_handler.py:28 tgbot/handlers/download_handler.py:33
+#: tgbot/handlers/download_handler.py:51 tgbot/handlers/download_handler.py:68
+#: tgbot/handlers/download_handler.py:71 tgbot/handlers/download_handler.py:75
+#: tgbot/handlers/download_handler.py:78 tgbot/handlers/download_handler.py:89
+#: tgbot/handlers/download_handler.py:90 tgbot/handlers/download_handler.py:102
+#: tgbot/handlers/download_handler.py:122
 #: tgbot/handlers/download_handler.py:138
 #: tgbot/handlers/download_handler.py:144
-msgid ""
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast "
-"and easy</b>"
+msgid "@SaveAnyBot — Save Any Media!"
 msgstr ""
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Tez va oson "
-"yuklang</b>"
-
-#: tgbot/handlers/download_handler.py:33 tgbot/handlers/download_handler.py:122
-msgid ""
-"Media quality: {quality}\n"
-"\n"
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast "
-"and easy</b>"
-msgstr ""
-"Media hajmi: {quality}\n"
-"\n"
-"<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Tez va oson "
-"yuklang</b>"
 
 #: tgbot/handlers/download_handler.py:36 tgbot/handlers/download_handler.py:54
 #: tgbot/handlers/download_handler.py:73 tgbot/handlers/download_handler.py:105
@@ -52,17 +37,16 @@ msgstr ""
 msgid "Size of media is too large but you can download it from link"
 msgstr "Media hajmi katta, ammo ushbu havola orqali yuklab olishingiz mumkin"
 
-#: tgbot/handlers/download_handler.py:41 tgbot/handlers/download_handler.py:58
-#: tgbot/handlers/download_handler.py:81 tgbot/handlers/download_handler.py:93
-#: tgbot/handlers/download_handler.py:112
+#: tgbot/handlers/download_handler.py:38 tgbot/handlers/download_handler.py:41
+#: tgbot/handlers/download_handler.py:58 tgbot/handlers/download_handler.py:81
+#: tgbot/handlers/download_handler.py:93 tgbot/handlers/download_handler.py:112
 #: tgbot/handlers/download_handler.py:128
 #: tgbot/handlers/download_handler.py:150
 msgid "Something went wrong, try again."
 msgstr "Xatolik yuz berdi, qayta urinib ko'ring."
 
-#: tgbot/handlers/user.py:25
-msgid ""
-"<b>Send a link and get your media!</b>\n"
+#: tgbot/handlers/user.py:20
+msgid "<b>Send a link and get your media!</b>\n"
 "\n"
 "You can download photo and video files from popular social media!\n"
 "\n"
@@ -71,30 +55,29 @@ msgid ""
 "Facebook\n"
 "YouTube\n"
 "Twitter\n"
-"Vkontakte\n"
-"SnapChat"
-msgstr ""
-"<b>Havola jo'nating va yuklab oling!</b>\n"
+"Pinterest"
+msgstr "<b>Havolani yuboring va mediangizni oling!</b>\n"
+" Siz mashhur ijtimoiy tarmoqlardan foto va video fayllarni yuklab olishingiz mumkin! Instagram\n"
 "\n"
-"Mashhur ijtimoiy tarmoqlardan rasm va videolarni yuklab olishingiz mumkin!\n"
-"\n"
-"Instagram\n"
-"TikTok\n"
+" TikTok \n"
 "Facebook\n"
 "YouTube\n"
 "Twitter\n"
-"Vkontakte\n"
-"SnapChat"
+"Pinterest"
 
-#: tgbot/handlers/user.py:28
+#: tgbot/handlers/user.py:23
 msgid "Choose language"
 msgstr "Tilni tanlang"
 
-#: tgbot/handlers/user.py:34
+#: tgbot/handlers/user.py:26
 msgid "Language changed"
 msgstr "Til o'zgardi"
 
-#: tgbot/keyboards/inline.py:124
+#: tgbot/keyboards/inline.py:125 tgbot/keyboards/inline.py:129
+msgid "Download {type} - {quality}p"
+msgstr "Yuklash Download {type} - {quality}p"
+
+#: tgbot/keyboards/inline.py:141
 msgid "Download"
 msgstr "Yuklash"
 
@@ -114,3 +97,23 @@ msgstr "Tilni tanlang"
 
 #~ msgid "Your limit for today is over."
 #~ msgstr "Bugungi limitingiz tugadi."
+
+#~ msgid ""
+#~ "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA "
+#~ "BOT⬇️</a> - <b>Download fast and "
+#~ "easy</b>"
+#~ msgstr ""
+#~ "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA "
+#~ "BOT⬇️</a> - <b>Tez va oson yuklang</b>"
+
+#~ msgid ""
+#~ "Media quality: {quality}\n"
+#~ "\n"
+#~ "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA "
+#~ "BOT⬇️</a> - <b>Download fast and "
+#~ "easy</b>"
+#~ msgstr ""
+#~ "Media hajmi: {quality}\n"
+#~ "\n"
+#~ "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA "
+#~ "BOT⬇️</a> - <b>Tez va oson yuklang</b>"
