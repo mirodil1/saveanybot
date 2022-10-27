@@ -17,7 +17,7 @@ async def user_start(message: Message):
             name=args,
             created_at=datetime.now()
         )
-    await message.answer(_("<b>Send a link and get your media!</b>\n\nYou can download photo and video files from popular social media!\n\nInstagram\nTikTok\nFacebook\nYouTube\nTwitter\nVkontakte\nSnapChat"))
+    await message.answer(_("<b>Send a link and get your media!</b>\n\nYou can download photo and video files from popular social media!\n\nInstagram\nTikTok\nFacebook\nYouTube\nTwitter\nPinterest"))
     
 async def lang_command(message: Message):
     await message.answer(_("Choose language"), reply_markup=lang_button)
