@@ -7,7 +7,7 @@ from tgbot.services.download import download_from_twitter, download_from_youtube
                                     download_from_pinterest
 from tgbot.middlewares.i18n import _
 from tgbot.services.db import db
-from tgbot.keyboards.inline import download_button
+from tgbot.keyboards.inline import download_button, download_youtube_button
 import os
 
 YOUTUBE_REGEX = r'(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?'
@@ -28,14 +28,14 @@ async def youtube_download_handler(message: types.Message):
             await message.answer_photo(result['thumb'], caption=_("@SaveAnyBot — Save Any Media!"))
         except Exception as e:
             print(e)
-        for item in result['items']:
-            try:
+        try:
+            for item in result['items']:
                 await message.answer_video(item['url'], caption=_("@SaveAnyBot — Save Any Media!"))
+        except:
+            try:
+                await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_youtube_button(result['items']))
             except:
-                try:
-                    await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(item['url']))
-                except:
-                    pass
+                await message.answer(_("Something went wrong, try again."))
         await db.consume_credits(telegram_id=message.from_user.id)
     elif result['hasError']:
         await message.answer(_("Something went wrong, try again."))
