@@ -50,6 +50,48 @@ async def download_from_instagram(link):
                                  created_at=datetime.now())
         return response
 
+async def download_from_instagram_by_username(username):
+
+    url = "https://socialdownloader.p.rapidapi.com/api/instagram/stories"
+
+    querystring =  {"username":username}
+
+    headers = {
+        "X-RapidAPI-Key": config.misc.rapid_api_key,
+        "X-RapidAPI-Host": "socialdownloader.p.rapidapi.com"
+    }
+
+    response = requests.request("GET", url, headers=headers, params=querystring).json()
+    if not response['hasError']:
+        await db.add_api_request(name='instagram_by_username',
+                                 status=True,
+                                 created_at=datetime.now())
+        stories = response['body']['stories']
+
+        video_story = list()
+        image_story = list()
+
+        for story in stories:
+            if 'has_audio' in story:
+                video_version = story['video_versions'][0]
+                video_story.append(video_version['url'])
+            else:
+                image_version = story['image_versions2']['candidates'][0]
+                image_story.append(image_version['url'])
+        
+        response = {
+            'hasError': False,
+            'image_story': image_story,
+            'video_story': video_story,
+        }
+        return response
+    elif response['hasError']:
+        await db.add_api_request(name='instagram_by_username',
+                                 status=False,
+                                 created_at=datetime.now())
+        return response
+
+
 async def download_video_from_tiktok(video_url):
     url = "https://tiktok-downloader-download-tiktok-videos-without-watermark.p.rapidapi.com/index"
 

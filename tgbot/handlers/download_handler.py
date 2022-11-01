@@ -1,13 +1,15 @@
-from cgitb import text
 from aiogram import Dispatcher
 from aiogram import types
 from aiogram.dispatcher import filters
+
 from tgbot.services.download import download_from_twitter, download_from_youtube, download_from_instagram, \
                                     download_video_from_tiktok, download_from_facebook, download_from_vkontakte, \
-                                    download_from_pinterest
+                                    download_from_pinterest, download_from_instagram_by_username
+from tgbot.services.other import url_shortener
 from tgbot.middlewares.i18n import _
 from tgbot.services.db import db
 from tgbot.keyboards.inline import download_button, download_youtube_button
+
 import os
 
 YOUTUBE_REGEX = r'(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?'
@@ -17,6 +19,7 @@ VKONTAKTE_REGEX = r'((?:https?:\/\/www\.)?vkontakte\.com\/)'
 TIKTOK_REGEX = r'((?:https?:\/\/)?(?:www|m\.)?tiktok\.com\/)'
 FACEBOOK_REGEX = r'(?:https?:\/\/)?(?:www\.|web\.|m\.)?facebook\.com\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?'
 PINTEREST_REGEX = r'((?:https?:\/\/www\.)?pinterest\.com\/)'
+INSTA_USERNAME_REGEX = r'^[a-zA-Z0-9_.@]+$'
 
 async def youtube_download_handler(message: types.Message):
     waiting_msg = await message.answer('🔍')
@@ -69,8 +72,9 @@ async def insta_download_handler(message: types.Message):
         elif result['Type'] == 'Post-Video':
             try:
                 await message.answer_video(result['media'], caption=_("@SaveAnyBot — Save Any Media!"))
-            except:
+            except Exception as e:
                 await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(result['url']))
+                print(e)
         elif result['Type'] == 'Post-Image':
             await message.answer_photo(result['media'], caption=_("@SaveAnyBot — Save Any Media!"))
         elif result['Type'] == 'Carousel':
@@ -100,7 +104,8 @@ async def facebook_download_handler(message: types.Message):
         try:
             await waiting_msg.delete()
             await message.answer_video(result['body']['video'], caption=_("@SaveAnyBot — Save Any Media!"))
-        except:
+        except Exception as e:
+            print(e)
             try:
                 await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(result['body']['video']))
             except:
@@ -149,6 +154,45 @@ async def pinterest_download_handler(message: types.Message):
         await waiting_msg.delete()
         await message.answer(_("Something went wrong, try again."))
 
+async def insta_by_username_download_handler(message: types.Message):
+    waiting_msg = await message.answer('🔍')
+    username = message.text
+    if not username.startswith("@"):
+        username = "@"+username
+
+    result = await download_from_instagram_by_username(username)
+    if not result['hasError']:
+        print("no error")
+        await waiting_msg.delete()
+        album = types.MediaGroup()
+
+        videos = result['video_story']
+        images = result['image_story']
+        print("vid img")
+        for video in videos:
+            await message.answer_video(video)
+            album.attach_video(video, caption=_("@SaveAnyBot — Save Any Media!"))
+        for image in images:
+            image = await url_shortener(video)
+            # album.attach_photo(image, caption=_("@SaveAnyBot — Save Any Media!"))
+        try:
+            await message.answer_media_group(media=album)
+        except Exception as e:
+            try:
+                for media in album:
+                    await message.answer_video(media['media'])
+                # for video in videos:
+                #     await message.answer_video(video)
+                # for image in images:
+                #     await message.answer_photo(image)
+            except Exception as e:
+                print(e)
+                await message.answer(_("Something went wrong, try again."))
+    if result['hasError']:
+        print("error true")
+        await waiting_msg.delete()
+        await message.answer(_("Something went wrong, try again."))
+
 
 def register_download_handler(dp: Dispatcher):
     dp.register_message_handler(insta_download_handler, filters.Regexp(INSTA_REGEX))    
@@ -158,3 +202,4 @@ def register_download_handler(dp: Dispatcher):
     dp.register_message_handler(facebook_download_handler, filters.Regexp(FACEBOOK_REGEX))
     dp.register_message_handler(vk_download_handler, filters.Regexp(VKONTAKTE_REGEX))
     dp.register_message_handler(pinterest_download_handler, filters.Regexp(PINTEREST_REGEX))
+    dp.register_message_handler(insta_by_username_download_handler, filters.Regexp(INSTA_USERNAME_REGEX))
