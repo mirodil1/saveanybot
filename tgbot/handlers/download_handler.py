@@ -21,6 +21,7 @@ FACEBOOK_REGEX = r'(?:https?:\/\/)?(?:www\.|web\.|m\.)?facebook\.com\/?.*(?:watc
 PINTEREST_REGEX = r'((?:https?:\/\/www\.)?pinterest\.com\/)'
 INSTA_USERNAME_REGEX = r'^[a-zA-Z0-9_.@]+$'
 
+
 async def youtube_download_handler(message: types.Message):
     waiting_msg = await message.answer('🔍')
     video_url = message.text
@@ -66,14 +67,13 @@ async def insta_download_handler(message: types.Message):
     result = await download_from_instagram(link)
     try:
         await waiting_msg.delete()
-        if type(result) == list:
-            if result[0]['type'] == 'Video':
-                await message.answer_video(result[0]['media'], caption=_("@SaveAnyBot — Save Any Media!"))
+        if result['Type'] == 'Story-Video':
+            await message.answer_video(result['media'][0], caption=_("@SaveAnyBot — Save Any Media!"))
         elif result['Type'] == 'Post-Video':
             try:
                 await message.answer_video(result['media'], caption=_("@SaveAnyBot — Save Any Media!"))
             except Exception as e:
-                await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(result['url']))
+                await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(result['media']))
                 print(e)
         elif result['Type'] == 'Post-Image':
             await message.answer_photo(result['media'], caption=_("@SaveAnyBot — Save Any Media!"))
@@ -150,6 +150,7 @@ async def pinterest_download_handler(message: types.Message):
             except Exception as e:
                 print(e)
         await db.consume_credits(telegram_id=message.from_user.id)
+
     elif not result['success']:
         await waiting_msg.delete()
         await message.answer(_("Something went wrong, try again."))
@@ -162,34 +163,51 @@ async def insta_by_username_download_handler(message: types.Message):
 
     result = await download_from_instagram_by_username(username)
     if not result['hasError']:
-        print("no error")
-        await waiting_msg.delete()
-        album = types.MediaGroup()
+        
+        album_video = types.MediaGroup()
+        album_img = types.MediaGroup()
 
         videos = result['video_story']
         images = result['image_story']
-        print("vid img")
-        for video in videos:
-            await message.answer_video(video)
-            album.attach_video(video, caption=_("@SaveAnyBot — Save Any Media!"))
-        for image in images:
-            image = await url_shortener(video)
-            # album.attach_photo(image, caption=_("@SaveAnyBot — Save Any Media!"))
-        try:
-            await message.answer_media_group(media=album)
-        except Exception as e:
+
+        if len(videos) > 0 or len(images) > 0:
+            # adding url list to album
+            for video in videos:
+                album_video.attach_video(video, caption=_("@SaveAnyBot — Save Any Media!"))
+            for image in images:
+                album_img.attach_photo(image, caption=_("@SaveAnyBot — Save Any Media!"))
+
+            await waiting_msg.delete()
+
+            # sending video album
             try:
-                for media in album:
-                    await message.answer_video(media['media'])
-                # for video in videos:
-                #     await message.answer_video(video)
-                # for image in images:
-                #     await message.answer_photo(image)
+                await message.answer_media_group(media=album_video)
             except Exception as e:
-                print(e)
-                await message.answer(_("Something went wrong, try again."))
-    if result['hasError']:
-        print("error true")
+                try:
+                    for video in videos:
+                        await message.answer_video(video, caption=_("@SaveAnyBot — Save Any Media!"))
+                except Exception as e:
+                    print(e)
+                    await message.answer(_("Something went wrong, try again."))
+            
+            # sending photo album
+            try:
+                await message.answer_media_group(media=album_img)
+            except Exception as e:
+                try:
+                    for image in images:
+                        await message.answer_photo(image, caption=_("@SaveAnyBot — Save Any Media!"))
+                except Exception as e:
+                    print(e)
+                    await message.answer(_("Something went wrong, try again."))
+        else:
+            await waiting_msg.delete()
+            await message.answer(_("Story not found"))
+
+        await db.consume_credits(telegram_id=message.from_user.id)
+
+
+    elif result['hasError']:
         await waiting_msg.delete()
         await message.answer(_("Something went wrong, try again."))
 

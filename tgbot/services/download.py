@@ -62,6 +62,7 @@ async def download_from_instagram_by_username(username):
     }
 
     response = requests.request("GET", url, headers=headers, params=querystring).json()
+
     if not response['hasError']:
         await db.add_api_request(name='instagram_by_username',
                                  status=True,
