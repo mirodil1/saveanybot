@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-27 11:20+0500\n"
-"PO-Revision-Date: 2022-10-27 11:46+0500\n"
+"POT-Creation-Date: 2022-11-02 11:53+0500\n"
+"PO-Revision-Date: 2022-11-02 12:00+0500\n"
 "Last-Translator: \n"
 "Language-Team: tr <LL@li.org>\n"
 "Language: tr\n"
@@ -19,34 +19,46 @@ msgstr ""
 "Generated-By: Babel 2.9.1\n"
 "X-Generator: Poedit 3.2.1\n"
 
-#: tgbot/handlers/download_handler.py:28 tgbot/handlers/download_handler.py:33
-#: tgbot/handlers/download_handler.py:51 tgbot/handlers/download_handler.py:68
-#: tgbot/handlers/download_handler.py:71 tgbot/handlers/download_handler.py:75
-#: tgbot/handlers/download_handler.py:78 tgbot/handlers/download_handler.py:89
-#: tgbot/handlers/download_handler.py:90 tgbot/handlers/download_handler.py:102
-#: tgbot/handlers/download_handler.py:122
-#: tgbot/handlers/download_handler.py:138
+#: tgbot/handlers/download_handler.py:32 tgbot/handlers/download_handler.py:37
+#: tgbot/handlers/download_handler.py:55 tgbot/handlers/download_handler.py:72
+#: tgbot/handlers/download_handler.py:75 tgbot/handlers/download_handler.py:80
+#: tgbot/handlers/download_handler.py:83 tgbot/handlers/download_handler.py:94
+#: tgbot/handlers/download_handler.py:95 tgbot/handlers/download_handler.py:107
+#: tgbot/handlers/download_handler.py:128
 #: tgbot/handlers/download_handler.py:144
+#: tgbot/handlers/download_handler.py:150
+#: tgbot/handlers/download_handler.py:177
+#: tgbot/handlers/download_handler.py:179
+#: tgbot/handlers/download_handler.py:189
+#: tgbot/handlers/download_handler.py:200
 msgid "@SaveAnyBot — Save Any Media!"
 msgstr ""
 
-#: tgbot/handlers/download_handler.py:36 tgbot/handlers/download_handler.py:54
-#: tgbot/handlers/download_handler.py:73 tgbot/handlers/download_handler.py:105
-#: tgbot/handlers/download_handler.py:124
-#: tgbot/handlers/download_handler.py:140
+#: tgbot/handlers/download_handler.py:40 tgbot/handlers/download_handler.py:58
+#: tgbot/handlers/download_handler.py:77 tgbot/handlers/download_handler.py:111
+#: tgbot/handlers/download_handler.py:130
+#: tgbot/handlers/download_handler.py:146
 msgid "Size of media is too large but you can download it from link"
 msgstr "Medya boyutu çok büyük ama bağlantıdan indirebilirsiniz"
 
-#: tgbot/handlers/download_handler.py:38 tgbot/handlers/download_handler.py:41
-#: tgbot/handlers/download_handler.py:58 tgbot/handlers/download_handler.py:81
-#: tgbot/handlers/download_handler.py:93 tgbot/handlers/download_handler.py:112
-#: tgbot/handlers/download_handler.py:128
-#: tgbot/handlers/download_handler.py:150
+#: tgbot/handlers/download_handler.py:42 tgbot/handlers/download_handler.py:45
+#: tgbot/handlers/download_handler.py:62 tgbot/handlers/download_handler.py:86
+#: tgbot/handlers/download_handler.py:98 tgbot/handlers/download_handler.py:118
+#: tgbot/handlers/download_handler.py:134
+#: tgbot/handlers/download_handler.py:157
+#: tgbot/handlers/download_handler.py:192
+#: tgbot/handlers/download_handler.py:203
+#: tgbot/handlers/download_handler.py:213
 msgid "Something went wrong, try again."
 msgstr "Bir şeyler ters gitti, tekrar deneyin."
 
+#: tgbot/handlers/download_handler.py:206
+msgid "Story not found"
+msgstr "Hikaye bulunamadı"
+
 #: tgbot/handlers/user.py:20
-msgid "<b>Send a link and get your media!</b>\n"
+msgid ""
+"<b>Send a link and get your media!</b>\n"
 "\n"
 "You can download photo and video files from popular social media!\n"
 "\n"
@@ -56,7 +68,8 @@ msgid "<b>Send a link and get your media!</b>\n"
 "YouTube\n"
 "Twitter\n"
 "Pinterest"
-msgstr "<b>Bir bağlantı gönderin ve medyanızı alın!</b>\n"
+msgstr ""
+"<b>Bir bağlantı gönderin ve medyanızı alın!</b>\n"
 "\n"
 "Popüler sosyal medyadan fotoğraf ve video dosyaları indirebilirsiniz!\n"
 "\n"
@@ -100,24 +113,14 @@ msgstr "Dil seçiniz"
 #~ msgid "Your limit for today is over."
 #~ msgstr "Bugünkü limitiniz doldu."
 
-#~ msgid ""
-#~ "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA "
-#~ "BOT⬇️</a> - <b>Download fast and "
-#~ "easy</b>"
-#~ msgstr ""
-#~ "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA "
-#~ "BOT⬇️</a> - <b>Hızlı ve kolay "
-#~ "indirin</b>"
+#~ msgid "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"
+#~ msgstr "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Hızlı ve kolay indirin</b>"
 
 #~ msgid ""
 #~ "Media quality: {quality}\n"
 #~ "\n"
-#~ "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA "
-#~ "BOT⬇️</a> - <b>Download fast and "
-#~ "easy</b>"
+#~ "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Download fast and easy</b>"
 #~ msgstr ""
 #~ "Medya kalitesi: {quality}\n"
 #~ "\n"
-#~ "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA "
-#~ "BOT⬇️</a> - <b>Hızlı ve kolay "
-#~ "indirin</b>"
+#~ "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>Hızlı ve kolay indirin</b>"
