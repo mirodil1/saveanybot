@@ -67,8 +67,17 @@ async def insta_download_handler(message: types.Message):
     result = await download_from_instagram(link)
     try:
         await waiting_msg.delete()
-        if result['Type'] == 'Story-Video':
-            await message.answer_video(result['media'][0], caption=_("@SaveAnyBot — Save Any Media!"))
+        if isinstance(result, list):
+            result = result[0]
+            if result['type'] == 'Video':
+                await message.answer_video(result['media'], caption=_("@SaveAnyBot — Save Any Media!"))
+            elif result['type'] == 'Image':
+                await message.answer_photo(result['media'], caption=_("@SaveAnyBot — Save Any Media!"))
+        elif isinstance(result, dict):
+            if result['Type'] == 'Story-Video':
+                await message.answer_video(result['media'][0], caption=_("@SaveAnyBot — Save Any Media!"))
+            elif result['Type'] == 'Story-Image':
+                await message.answer_photo(result['media'][0], caption=_("@SaveAnyBot — Save Any Media!"))
         elif result['Type'] == 'Post-Video':
             try:
                 await message.answer_video(result['media'], caption=_("@SaveAnyBot — Save Any Media!"))

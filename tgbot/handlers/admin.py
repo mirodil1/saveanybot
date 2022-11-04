@@ -31,8 +31,9 @@ async def ads(message: types.Message):
 
 async def prepare_to_send(message: types.Message, state: FSMContext):
     counter = await db.count_users()
+    print(counter)
     await bot.forward_message(from_chat_id=message.from_user.id, chat_id=message.from_user.id, message_id=message.message_id)
-    await message.answer(f"Xabar {counter} ta foydalanuvchiga yuboriladi.", reply_markup=send_msg_button)
+    await message.answer(f"Xabarni tasqdiqlang", reply_markup=send_msg_button)
     async with state.proxy() as data:
         data['message'] = message.message_id
         data['from_user_id'] = message.from_user.id

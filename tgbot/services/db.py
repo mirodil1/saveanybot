@@ -55,6 +55,10 @@ class Database:
     async def select_all_users(self):
         sql = "SELECT * FROM savebot_telegramusers"
         return await self.execute(sql, fetch=True)
+    
+    async def select_all_uz_users(self):
+        sql = "SELECT * FROM savebot_telegramusers WHERE language_code=uz"
+        return await self.execute(sql, fetch=True)
 
     async def select_user(self, **kwargs):
         sql = "SELECT * FROM savebot_telegramusers WHERE "
@@ -66,8 +70,8 @@ class Database:
         return await self.execute(sql, fetchval=True)
 
     async def count_users_by_language(self):
-        sql = "SELECT language_code, COUNT(*) FROM savebot_telegramusers GROUP BY language_code"
-        return await self.execute(sql, fetch=True)
+        sql = "SELECT COUNT(*) FROM savebot_telegramusers WHERE 'language_code'=uz"
+        return await self.execute(sql, fetchval=True)
 
     async def users_joined_today(self):
         sql = """SELECT COUNT(*) FROM savebot_telegramusers WHERE joined_date
@@ -95,7 +99,7 @@ class Database:
         return await self.execute(sql, telegram_id, execute=True)
 
     async def update_credits(self):
-        sql = "UPDATE savebot_telegramusers SET credits=10"
+        sql = "UPDATE savebot_telegramusers SET credits=25"
         return await self.execute(sql, execute=True)
 
     # Channels table queries
