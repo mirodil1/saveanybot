@@ -21,8 +21,10 @@ class CustomI18nMiddleware(I18nMiddleware):
 
         # changed language code
         try:
-            lang_code = _['data'].split(":")[1]
-            await db.set_language_code(language_code=lang_code, telegram_id=user['id'])
+            call_data = _['data'].split(":")
+            if call_data[0] == "language":
+                print(call_data)
+                await db.set_language_code(language_code=call_data[1], telegram_id=user['id'])
         except:
             pass
         try:

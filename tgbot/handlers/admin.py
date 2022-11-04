@@ -30,10 +30,10 @@ async def ads(message: types.Message):
         await Message.message.set()
 
 async def prepare_to_send(message: types.Message, state: FSMContext):
-    counter = await db.count_users()
+    counter = await db.count_users_by_language()
     print(counter)
-    await bot.forward_message(from_chat_id=message.from_user.id, chat_id=message.from_user.id, message_id=message.message_id)
-    await message.answer(f"Xabarni tasqdiqlang", reply_markup=send_msg_button)
+    await bot.copy_message(from_chat_id=message.from_user.id, chat_id=message.from_user.id, message_id=message.message_id)
+    await message.answer(f"Xabar {counter} foydalanuchiga yuboriladi", reply_markup=send_msg_button)
     async with state.proxy() as data:
         data['message'] = message.message_id
         data['from_user_id'] = message.from_user.id
@@ -45,7 +45,7 @@ async def confirmation(call: types.CallbackQuery, state: FSMContext, callback_da
         data = await state.get_data()
         from_user_id = data.get('from_user_id')
         message_id = data.get('message')
-        users = await db.select_all_users()
+        users = await db.select_all_uz_users()
         await call.message.edit_text("Xabar yuborilyapti")
         await state.finish()
         for user in users:
