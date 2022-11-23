@@ -17,3 +17,4 @@ async def url_shortener(link):
 
     response = requests.request("POST", url, json=payload, headers=headers, params=querystring).json()
     return response['short_link']
+
