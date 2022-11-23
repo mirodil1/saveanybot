@@ -186,9 +186,8 @@ async def download_from_twitter(video_url):
     #                              status=False,
     #                              created_at=datetime.now())
     #     return {'hasError': response['hasError']}
-
     ydl_opts = {
-        'outtmpl': 'tgbot/media/%(title)s.%(ext)s',
+        'outtmpl': 'tgbot/media/%(id)s.%(ext)s',
     }
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
