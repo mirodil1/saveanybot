@@ -17,7 +17,7 @@ INSTA_REGEX = r'((?:https?:\/\/www\.)?instagram\.com\/)'
 TWITTER_REGEX = r'((?:https?:\/\/www\.)?twitter\.com\/)'
 VKONTAKTE_REGEX = r'((?:https?:\/\/www\.)?vkontakte\.com\/)'
 TIKTOK_REGEX = r'((?:https?:\/\/)?(?:www|m\.)?tiktok\.com\/)'
-FACEBOOK_REGEX = r'(?:https?:\/\/)?(?:www\.|web\.|m\.)?facebook\.com\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?'
+FACEBOOK_REGEX = r'(?:https?:\/\/)?(?:www\.|web\.|m\.)?fb|facebook\.com\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?'
 PINTEREST_REGEX = r'((?:https?:\/\/www\.)?pinterest\.com\/)'
 INSTA_USERNAME_REGEX = r'^[a-zA-Z0-9_.@]+$'
 
@@ -65,34 +65,38 @@ async def insta_download_handler(message: types.Message):
     waiting_msg = await message.answer('🔍')
     link = message.text
     result = await download_from_instagram(link)
-    try:
-        await waiting_msg.delete()
-        if isinstance(result, list):
-            result = result[0]
-            if result['type'] == 'Video':
+    if result is not None:
+        try:
+            await waiting_msg.delete()
+            if isinstance(result, list):
+                result = result[0]
+                if result['type'] == 'Video':
+                    await message.answer_video(result['media'], caption=_("@SaveAnyBot — Save Any Media!"))
+                elif result['type'] == 'Image':
+                    await message.answer_photo(result['media'], caption=_("@SaveAnyBot — Save Any Media!"))
+           
+            elif result['Type'] == 'Story-Video':
                 await message.answer_video(result['media'], caption=_("@SaveAnyBot — Save Any Media!"))
-            elif result['type'] == 'Image':
-                await message.answer_photo(result['media'], caption=_("@SaveAnyBot — Save Any Media!"))
-        elif isinstance(result, dict):
-            if result['Type'] == 'Story-Video':
-                await message.answer_video(result['media'][0], caption=_("@SaveAnyBot — Save Any Media!"))
             elif result['Type'] == 'Story-Image':
-                await message.answer_photo(result['media'][0], caption=_("@SaveAnyBot — Save Any Media!"))
-        elif result['Type'] == 'Post-Video':
-            try:
-                await message.answer_video(result['media'], caption=_("@SaveAnyBot — Save Any Media!"))
-            except Exception as e:
-                await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(result['media']))
-                print(e)
-        elif result['Type'] == 'Post-Image':
-            await message.answer_photo(result['media'], caption=_("@SaveAnyBot — Save Any Media!"))
-        elif result['Type'] == 'Carousel':
-            for m in result['media']:
-                await message.answer_video(m, caption=_("@SaveAnyBot — Save Any Media!"))
-        await db.consume_credits(telegram_id=message.from_user.id)
-    except:
+                await message.answer_photo(result['media'], caption=_("@SaveAnyBot — Save Any Media!"))
+            elif result['Type'] == 'Post-Video':
+                try:
+                    await message.answer_video(result['media'], caption=_("@SaveAnyBot — Save Any Media!"))
+                except Exception as e:
+                    await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(result['media']))
+                    print(e)
+            elif result['Type'] == 'Post-Image':
+                await message.answer_photo(result['media'], caption=_("@SaveAnyBot — Save Any Media!"))
+            elif result['Type'] == 'Carousel':
+                for m in result['media']:
+                    await message.answer_video(m, caption=_("@SaveAnyBot — Save Any Media!"))
+            await db.consume_credits(telegram_id=message.from_user.id)
+        except:
+            await message.answer(_("Something went wrong, try again."))
+    else:
+        await waiting_msg.delete()
         await message.answer(_("Something went wrong, try again."))
-
+        
 async def tiktok_download_handler(message: types.Message):
     waiting_msg = await message.answer('🔍')
     video_url = message.text
@@ -117,8 +121,8 @@ async def facebook_download_handler(message: types.Message):
             print(e)
             try:
                 await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(result['body']['video']))
-            except:
-                pass
+            except Exception as e:
+                print(e)
                 # await message.answer("Something went wrong, try again.")
         await db.consume_credits(telegram_id=message.from_user.id)
     elif result['hasError']:
