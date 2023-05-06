@@ -6,6 +6,7 @@ import requests
 
 config = load_config(".env")
 
+
 async def download_from_facebook(video_url):
 
     url = "https://socialdownloader.p.rapidapi.com/api/facebook/video"
@@ -32,6 +33,7 @@ async def download_from_facebook(video_url):
         return await download_from_facebook_fastest_api(video_url)
     # return response
 
+
 async def download_from_instagram(link):
 
     url = "https://instagram-downloader-download-instagram-videos-stories.p.rapidapi.com/index"
@@ -56,6 +58,7 @@ async def download_from_instagram(link):
                                     created_at=datetime.now())
             return response
     return None
+
 
 async def download_from_instagram_by_username(username):
 
@@ -121,6 +124,7 @@ async def download_video_from_tiktok(video_url):
                                  created_at=datetime.now())
     return response
 
+
 async def download_from_youtube(video_url):
     items = list()
     url = "https://socialdownloader.p.rapidapi.com/api/youtube/video"
@@ -154,49 +158,32 @@ async def download_from_youtube(video_url):
     except:
         return await download_from_youtube_fastest_api(video_url)
 
+
 async def download_from_vkontakte(video_url):
 
-    url = "https://socialdownloader.p.rapidapi.com/api/vkontakte/video"
-    
-    headers = {
-	"X-RapidAPI-Host": "socialdownloader.p.rapidapi.com",
-	"X-RapidAPI-Key": config.misc.rapid_api_key
+    ydl_opts = {
+        'outtmpl': 'tgbot/media/%(id)s.%(ext)s',
+        'username': "azamat_yamin",
+        "password": "VIH&Dl65#E0y"
     }
-    querystring = {"video_link":video_url}
-    response = requests.request("GET", url, headers=headers, params=querystring).json()
-    if not response['hasError']:
-        items = response['body']['videos']
-        await db.add_api_request(name='vkontakte',
+    try:
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            uri = video_url
+            info = ydl.extract_info(uri, download=True)
+            filename = ydl.prepare_filename(info)
+        await db.add_api_request(name='twitter',
                                  status=True,
                                  created_at=datetime.now())
-        return {'hasError': response['hasError'], 'videos': {items}}
-    elif response['hasError']:
-        await db.add_api_request(name='vkontakte',
+        return {"hasError": False, "url":filename}
+    except:
+        await db.add_api_request(name='twitter',
                                  status=False,
                                  created_at=datetime.now())
-        return {"hasError": response['hasError']}
+        return {"hasError": True}
+
 
 async def download_from_twitter(video_url):
 
-    # url = "https://socialdownloader.p.rapidapi.com/api/twitter/video"
-    
-    # headers = {
-	# "X-RapidAPI-Host": "socialdownloader.p.rapidapi.com",
-	# "X-RapidAPI-Key": config.misc.rapid_api_key
-    # }
-
-    # querystring = {"video_link":video_url}
-    # response = requests.request("GET", url, headers=headers, params=querystring).json()
-    # if not response['hasError']:
-    #     await db.add_api_request(name='twitter',
-    #                              status=True,
-    #                              created_at=datetime.now())
-    #     return {'hasError': response['hasError'], 'url': response['body']['url']}
-    # elif response['hasError']:
-    #     await db.add_api_request(name='twitter',
-    #                              status=False,
-    #                              created_at=datetime.now())
-    #     return {'hasError': response['hasError']}
     ydl_opts = {
         'outtmpl': 'tgbot/media/%(id)s.%(ext)s',
     }
@@ -240,6 +227,7 @@ async def download_from_pinterest(link):
                                  created_at=datetime.now())
         return response
 
+
 async def download_from_facebook_fastest_api(link):
 
     url = 'https://fastest-social-video-and-image-downloader.p.rapidapi.com/facebook'
@@ -272,6 +260,7 @@ async def download_from_facebook_fastest_api(link):
         }
     return result
 
+
 async def download_from_youtube_fastest_api(link):
 
     url = "https://fastest-social-video-and-image-downloader.p.rapidapi.com/youtube"
@@ -285,27 +274,39 @@ async def download_from_youtube_fastest_api(link):
 
     try:
         response = requests.request("GET", url, headers=headers, params=querystring).json()
-
         if response['success']:
             await db.add_api_request(name='youtube-fastest-api',
                                     status=True,
                                     created_at=datetime.now())
-            result = {
-                'hasError': False,
-                'thumb': response['thumbnail'],
-                'items': [
-                    {
-                        'url': response['data']['360p'],
-                        'quality': '360',
-                        'type': 'mp4' 
-                    },
-                    {
-                        'url': response['data']['720p'],
-                        'quality': '720',
-                        'type': 'mp4' 
-                    }
-                ]
-            }
+            try:
+                result = {
+                    'hasError': False,
+                    'thumb': response['thumbnail'],
+                    'items': [
+                        {
+                            'url': response['data']['360p'],
+                            'quality': '360',
+                            'type': 'mp4' 
+                        },
+                        {
+                            'url': response['data']['720p'],
+                            'quality': '720',
+                            'type': 'mp4' 
+                        }
+                    ]
+                }
+            except:
+                result = {
+                    'hasError': False,
+                    'thumb': response['thumbnail'],
+                    'items': [
+                        {
+                            'url': response['data']['360p'],
+                            'quality': '360',
+                            'type': 'mp4' 
+                        },
+                    ]
+                }
         elif not response['success']:
             await db.add_api_request(name='youtube-fastest-api',
                                     status=False,
@@ -319,3 +320,23 @@ async def download_from_youtube_fastest_api(link):
             'hasError': True,
         }
         return result
+    
+
+async def download_from_likee(video_url):
+    ydl_opts = {
+        'outtmpl': 'media/%(title)s.%(ext)s',
+    }
+    try:
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            uri = video_url
+            info = ydl.extract_info(uri, download=True)
+            filename = ydl.prepare_filename(info)
+        await db.add_api_request(name='likee',
+                                 status=True,
+                                 created_at=datetime.now())
+        return {"hasError": False, "url":filename}
+    except Exception as e:
+        await db.add_api_request(name='likee',
+                                 status=False,
+                                 created_at=datetime.now())
+        return {"hasError": True}
