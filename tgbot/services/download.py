@@ -44,63 +44,21 @@ async def download_from_instagram(link):
         "X-RapidAPI-Key": config.misc.rapid_api_key,
         "X-RapidAPI-Host": "instagram-downloader-download-instagram-videos-stories.p.rapidapi.com"
     }
-
-    response = requests.request("GET", url, headers=headers, params=querystring).json()
-    if response is not None:
-        if 'error' not in response:
-            await db.add_api_request(name='instagram',
-                                    status=True,
-                                    created_at=datetime.now())
-            return response
-        else:
-            await db.add_api_request(name='instagram',
-                                    status=False,
-                                    created_at=datetime.now())
-            return response
-    return None
-
-
-async def download_from_instagram_by_username(username):
-
-    url = "https://socialdownloader.p.rapidapi.com/api/instagram/stories"
-
-    querystring =  {"username":username}
-
-    headers = {
-        "X-RapidAPI-Key": config.misc.rapid_api_key,
-        "X-RapidAPI-Host": "socialdownloader.p.rapidapi.com"
-    }
-
-    response = requests.request("GET", url, headers=headers, params=querystring).json()
-
-    if not response['hasError']:
-        await db.add_api_request(name='instagram_by_username',
-                                 status=True,
-                                 created_at=datetime.now())
-        stories = response['body']['stories']
-
-        video_story = list()
-        image_story = list()
-
-        for story in stories:
-            if 'has_audio' in story:
-                video_version = story['video_versions'][0]
-                video_story.append(video_version['url'])
+    try:
+        response = requests.request("GET", url, headers=headers, params=querystring, timeout=10).json()
+        if response is not None:
+            if 'error' not in response:
+                await db.add_api_request(name='instagram',
+                                        status=True,
+                                        created_at=datetime.now())
+                return response
             else:
-                image_version = story['image_versions2']['candidates'][0]
-                image_story.append(image_version['url'])
-        
-        response = {
-            'hasError': False,
-            'image_story': image_story,
-            'video_story': video_story,
-        }
-        return response
-    elif response['hasError']:
-        await db.add_api_request(name='instagram_by_username',
-                                 status=False,
-                                 created_at=datetime.now())
-        return response
+                await db.add_api_request(name='instagram',
+                                        status=False,
+                                        created_at=datetime.now())
+                return response
+    except:
+        return None
 
 
 async def download_video_from_tiktok(video_url):
@@ -171,12 +129,12 @@ async def download_from_vkontakte(video_url):
             uri = video_url
             info = ydl.extract_info(uri, download=True)
             filename = ydl.prepare_filename(info)
-        await db.add_api_request(name='twitter',
+        await db.add_api_request(name='vkontakte',
                                  status=True,
                                  created_at=datetime.now())
         return {"hasError": False, "url":filename}
     except:
-        await db.add_api_request(name='twitter',
+        await db.add_api_request(name='vkontakte',
                                  status=False,
                                  created_at=datetime.now())
         return {"hasError": True}
@@ -320,7 +278,7 @@ async def download_from_youtube_fastest_api(link):
             'hasError': True,
         }
         return result
-    
+
 
 async def download_from_likee(video_url):
     ydl_opts = {
