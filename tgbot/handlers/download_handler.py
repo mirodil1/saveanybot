@@ -6,7 +6,7 @@ from aiogram.dispatcher import filters
 
 from tgbot.services.download import download_from_twitter, download_from_youtube, download_from_instagram, \
                                     download_video_from_tiktok, download_from_facebook, download_from_vkontakte, \
-                                    download_from_pinterest, download_from_instagram_by_username, download_from_likee
+                                    download_from_pinterest, download_from_likee
 from tgbot.middlewares.i18n import _
 from tgbot.services.db import db
 from tgbot.keyboards.inline import download_button, download_youtube_button
@@ -19,7 +19,6 @@ VKONTAKTE_REGEX = r'((?:https?:\/\/www\.)?vk\.com\/)'
 TIKTOK_REGEX = r'((?:https?:\/\/)?(?:www|m\.)?tiktok\.com\/)'
 FACEBOOK_REGEX = r'(?:https?:\/\/)?(?:www\.|web\.|m\.)?fb|facebook\.com\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?'
 PINTEREST_REGEX = r'^https?://(?:www\.)?pinterest\.com/|https?://pin\.it/.*$'
-INSTA_USERNAME_REGEX = r'^[a-zA-Z0-9_.@]+$'
 LIKEE_REGEX = r'(?:http[s]?:\/\/)?(?:www\.)?(?:likee\.com\/|likee\.video\/|like\.video\/|video\.likee\.co\/|video\.like\.co\/|video\.likee\.video\/|like\.ly\/)'
 
 
@@ -174,63 +173,6 @@ async def pinterest_download_handler(message: types.Message):
         await message.answer(_("Something went wrong, try again."))
 
 
-async def insta_by_username_download_handler(message: types.Message):
-    waiting_msg = await message.answer('🔍')
-    username = message.text
-    if not username.startswith("@"):
-        username = "@"+username
-
-    result = await download_from_instagram_by_username(username)
-    if not result['hasError']:
-        
-        album_video = types.MediaGroup()
-        album_img = types.MediaGroup()
-
-        videos = result['video_story']
-        images = result['image_story']
-
-        if len(videos) > 0 or len(images) > 0:
-            # adding url list to album
-            for video in videos:
-                album_video.attach_video(video, caption=_("@SaveAnyBot — Save Any Media!"))
-            for image in images:
-                album_img.attach_photo(image, caption=_("@SaveAnyBot — Save Any Media!"))
-
-            await waiting_msg.delete()
-
-            # sending video album
-            try:
-                await message.answer_media_group(media=album_video)
-            except Exception as e:
-                try:
-                    for video in videos:
-                        await message.answer_video(video, caption=_("@SaveAnyBot — Save Any Media!"))
-                except Exception as e:
-                    print(e)
-                    await message.answer(_("Something went wrong, try again."))
-            
-            # sending photo album
-            try:
-                await message.answer_media_group(media=album_img)
-            except Exception as e:
-                try:
-                    for image in images:
-                        await message.answer_photo(image, caption=_("@SaveAnyBot — Save Any Media!"))
-                except Exception as e:
-                    print(e)
-                    await message.answer(_("Something went wrong, try again."))
-        else:
-            await waiting_msg.delete()
-            await message.answer(_("Story not found"))
-
-        await db.consume_credits(telegram_id=message.from_user.id)
-
-
-    elif result['hasError']:
-        await waiting_msg.delete()
-        await message.answer(_("Something went wrong, try again."))
-
-
 async def likee_download_handler(message: types.Message):
     waiting_msg = await message.answer('🔍')
     video_url = message.text
@@ -258,4 +200,3 @@ def register_download_handler(dp: Dispatcher):
     dp.register_message_handler(facebook_download_handler, filters.Regexp(FACEBOOK_REGEX))
     dp.register_message_handler(vk_download_handler, filters.Regexp(VKONTAKTE_REGEX))
     dp.register_message_handler(pinterest_download_handler, filters.Regexp(PINTEREST_REGEX))
-    dp.register_message_handler(insta_by_username_download_handler, filters.Regexp(INSTA_USERNAME_REGEX))
