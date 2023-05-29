@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-23 12:20+0500\n"
-"PO-Revision-Date: 2022-11-23 12:23+0500\n"
+"POT-Creation-Date: 2023-05-26 14:46+0500\n"
+"PO-Revision-Date: 2023-05-26 14:52+0500\n"
 "Last-Translator: \n"
 "Language-Team: hi <LL@li.org>\n"
 "Language: hi\n"
@@ -17,48 +17,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.9.1\n"
-"X-Generator: Poedit 3.2.1\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #: tgbot/handlers/download_handler.py:32 tgbot/handlers/download_handler.py:37
-#: tgbot/handlers/download_handler.py:55 tgbot/handlers/download_handler.py:73
-#: tgbot/handlers/download_handler.py:75 tgbot/handlers/download_handler.py:78
-#: tgbot/handlers/download_handler.py:80 tgbot/handlers/download_handler.py:83
-#: tgbot/handlers/download_handler.py:88 tgbot/handlers/download_handler.py:91
-#: tgbot/handlers/download_handler.py:102
-#: tgbot/handlers/download_handler.py:103
-#: tgbot/handlers/download_handler.py:115
-#: tgbot/handlers/download_handler.py:136
-#: tgbot/handlers/download_handler.py:152
-#: tgbot/handlers/download_handler.py:158
-#: tgbot/handlers/download_handler.py:185
-#: tgbot/handlers/download_handler.py:187
-#: tgbot/handlers/download_handler.py:197
-#: tgbot/handlers/download_handler.py:208
+#: tgbot/handlers/download_handler.py:56 tgbot/handlers/download_handler.py:76
+#: tgbot/handlers/download_handler.py:78 tgbot/handlers/download_handler.py:81
+#: tgbot/handlers/download_handler.py:83 tgbot/handlers/download_handler.py:86
+#: tgbot/handlers/download_handler.py:90 tgbot/handlers/download_handler.py:93
+#: tgbot/handlers/download_handler.py:108
+#: tgbot/handlers/download_handler.py:109
+#: tgbot/handlers/download_handler.py:122
+#: tgbot/handlers/download_handler.py:143
+#: tgbot/handlers/download_handler.py:160
+#: tgbot/handlers/download_handler.py:166
+#: tgbot/handlers/download_handler.py:184
 msgid "@SaveAnyBot — Save Any Media!"
 msgstr ""
 
-#: tgbot/handlers/download_handler.py:40 tgbot/handlers/download_handler.py:58
-#: tgbot/handlers/download_handler.py:85 tgbot/handlers/download_handler.py:119
-#: tgbot/handlers/download_handler.py:138
-#: tgbot/handlers/download_handler.py:154
+#: tgbot/handlers/download_handler.py:40 tgbot/handlers/download_handler.py:59
+#: tgbot/handlers/download_handler.py:88 tgbot/handlers/download_handler.py:125
+#: tgbot/handlers/download_handler.py:145
+#: tgbot/handlers/download_handler.py:162
 msgid "Size of media is too large but you can download it from link"
 msgstr "मीडिया का आकार बहुत बड़ा है लेकिन आप इसे लिंक से डाउनलोड कर सकते हैं"
 
 #: tgbot/handlers/download_handler.py:42 tgbot/handlers/download_handler.py:45
-#: tgbot/handlers/download_handler.py:62 tgbot/handlers/download_handler.py:94
-#: tgbot/handlers/download_handler.py:106
-#: tgbot/handlers/download_handler.py:126
-#: tgbot/handlers/download_handler.py:142
-#: tgbot/handlers/download_handler.py:165
-#: tgbot/handlers/download_handler.py:200
-#: tgbot/handlers/download_handler.py:211
-#: tgbot/handlers/download_handler.py:221
+#: tgbot/handlers/download_handler.py:63 tgbot/handlers/download_handler.py:96
+#: tgbot/handlers/download_handler.py:99 tgbot/handlers/download_handler.py:112
+#: tgbot/handlers/download_handler.py:132
+#: tgbot/handlers/download_handler.py:149
+#: tgbot/handlers/download_handler.py:168
+#: tgbot/handlers/download_handler.py:173
+#: tgbot/handlers/download_handler.py:188
+#: tgbot/handlers/download_handler.py:191
 msgid "Something went wrong, try again."
 msgstr "कुछ गलत हुआ है, दोबारा कोशिश करें."
-
-#: tgbot/handlers/download_handler.py:214
-msgid "Story not found"
-msgstr "कहानी नहीं मिली"
 
 #: tgbot/handlers/user.py:20
 msgid ""
@@ -70,7 +63,9 @@ msgid ""
 "TikTok\n"
 "YouTube\n"
 "Twitter\n"
-"Pinterest"
+"Pinterest\n"
+"Facebook\n"
+"Likee"
 msgstr ""
 "<b>एक लिंक भेजें और अपना मीडिया प्राप्त करें!</b>\n"
 "\n"
@@ -80,7 +75,9 @@ msgstr ""
 "TikTok\n"
 "YouTube\n"
 "Twitter\n"
-"Pinterest"
+"Pinterest\n"
+"Facebook\n"
+"Likee"
 
 #: tgbot/handlers/user.py:23
 msgid "Choose language"
@@ -126,3 +123,6 @@ msgstr "भाषा चुनें"
 #~ "मीडिया गुणवत्ता: {quality}\n"
 #~ "\n"
 #~ "<a href='https://t.me/saveanybot'>SAVE ANY MEDIA BOT⬇️</a> - <b>तेज़ और आसान डाउनलोड करें</b>"
+
+#~ msgid "Story not found"
+#~ msgstr "कहानी नहीं मिली"
