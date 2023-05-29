@@ -56,7 +56,8 @@ async def twitter_download_handler(message: types.Message):
             await message.answer_video(file_path, caption=_("@SaveAnyBot — Save Any Media!"))
             os.remove(result['url'])
         except:
-            await message.answer(_("Size of media is too large but you can download it from link"), reply_markup=await download_button(result['url']))
+            await message.answer(_("Something went wrong, try again."))
+            os.remove(result['url'])
         await db.consume_credits(telegram_id=message.from_user.id)
     elif result['hasError']:
         await waiting_msg.delete()
@@ -108,7 +109,8 @@ async def tiktok_download_handler(message: types.Message):
         await message.answer_video(result['video'][0], caption=_("@SaveAnyBot — Save Any Media!"))
         await message.answer_audio(result['music'][0], caption=_("@SaveAnyBot — Save Any Media!"))
         await db.consume_credits(telegram_id=message.from_user.id)
-    except:
+    except Exception as e:
+        print(e)
         await message.answer(_("Something went wrong, try again."))
 
 
