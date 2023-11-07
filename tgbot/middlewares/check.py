@@ -1,20 +1,17 @@
+import re
 from datetime import datetime
-import logging
-from typing import Any, Tuple, List, Dict, Optional
-from unittest import result
+from pathlib import Path
+
 from aiogram import types
 from aiogram.dispatcher.handler import CancelHandler
 from aiogram.dispatcher.middlewares import BaseMiddleware
+import asyncpg
 
 from tgbot.services.db import db
 from tgbot.services.check_sub import check_user_sub
 from tgbot.keyboards.inline import subscription_button
-# from tgbot.middlewares.i18n import _
-import asyncpg
-import re
-
 from tgbot.middlewares.i18n import CustomI18nMiddleware
-from pathlib import Path
+
 
 BASE_DIR = Path(__file__).parent
 LOCALES_DIR ='locales'
@@ -184,7 +181,7 @@ class CheckSubscriptionMiddleware(BaseMiddleware):
 
         credits = dict(await db.get_credits(user_id))
 
-        # get channels buy user language
+        # get channels by user language
         channels = [channel for channel in channels if user['language_code'] in channel['language'].split(',')]
         
         for channel in channels:
@@ -195,7 +192,11 @@ class CheckSubscriptionMiddleware(BaseMiddleware):
         if result_url or result_username:
             if not final_status:
                 try:
-                    await update.message.answer(text=sub_msg[user['language_code']], disable_web_page_preview=True, reply_markup=await subscription_button(channels, user))
+                    await update.message.answer(
+                        text=sub_msg[user['language_code']],
+                        disable_web_page_preview=True,
+                        reply_markup=await subscription_button(channels, user)
+                    )
                     raise CancelHandler()
                 except:
                     raise CancelHandler()

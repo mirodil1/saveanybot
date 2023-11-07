@@ -1,12 +1,11 @@
-import re
 import asyncio
 
 from aiogram import Dispatcher, Bot
 from aiogram import types
-from aiogram.dispatcher import filters, FSMContext
+from aiogram.dispatcher import FSMContext
 from aiogram.utils.deep_linking import get_start_link
 
-from tgbot.keyboards.inline import  response_callback, send_msg_button, response_callback_confirm
+from tgbot.keyboards.inline import  send_msg_button, response_callback_confirm
 from tgbot.misc.states import Message, Link
 from tgbot.services.db import db
 from tgbot.config import load_config
@@ -38,7 +37,9 @@ async def ads(message: types.Message):
 
 async def prepare_to_send(message: types.Message, state: FSMContext):
     counter = await db.count_users()
-    await bot.copy_message(from_chat_id=message.from_user.id, chat_id=message.from_user.id, message_id=message.message_id)
+    await bot.copy_message(
+        from_chat_id=message.from_user.id, chat_id=message.from_user.id, message_id=message.message_id
+    )
     await message.answer(f"Xabar {counter} foydalanuchiga yuboriladi", reply_markup=send_msg_button)
     async with state.proxy() as data:
         data['message'] = message.message_id
@@ -75,8 +76,12 @@ def register_admin(dp: Dispatcher):
     dp.register_message_handler(admin_start, commands=["start"], state="*", is_admin=True)
 
     dp.register_message_handler(ads, commands=["reklama"], is_admin=True)
-    dp.register_message_handler(prepare_to_send, content_types=[types.ContentType.ANY], state=Message.message, is_admin=True)
-    dp.register_callback_query_handler(confirmation, response_callback_confirm.filter(), state=Message.message, is_admin=True)
+    dp.register_message_handler(
+        prepare_to_send, content_types=[types.ContentType.ANY], state=Message.message, is_admin=True
+    )
+    dp.register_callback_query_handler(
+        confirmation, response_callback_confirm.filter(), state=Message.message, is_admin=True
+    )
 
     dp.register_message_handler(command_link, commands=["link"], is_admin=True)
     dp. register_message_handler(get_deep_link, state=Link.link, is_admin=True)
