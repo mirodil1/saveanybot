@@ -8,7 +8,7 @@ from aiogram.dispatcher import filters
 from tgbot.services.download import download_from_pinterest, download_from_likee, all_in_one
 from tgbot.middlewares.i18n import _
 from tgbot.services.db import db
-from tgbot.keyboards.inline import download_button
+from tgbot.keyboards.inline import download_button, download_youtube_button
 
 
 YOUTUBE_REGEX = r'(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?'
@@ -27,7 +27,20 @@ async def youtube_download_handler(message: types.Message):
     result = await all_in_one(link)
     if not result["error"]:
         await waiting_msg.delete()
-
+        for media in result['medias']:
+            if media['type'] == 'video' and media['quality'] == '360p':
+                try:
+                    await message.answer_video(media['url'], caption=_("@SaveAnyBot — Save Any Media!"))
+                except Exception as e:
+                    await message.answer(
+                        _("Size of media is too large but you can download it from link"),
+                        reply_markup=await download_button(media['url'])
+                    )
+            elif media['type'] == 'audio':
+                try:
+                    await message.answer_audio(media['url'], caption=_("@SaveAnyBot — Save Any Media!"))
+                except Exception as e:
+                    pass # do nothing
         await db.consume_credits(telegram_id=message.from_user.id)
         await db.add_api_request(name='youtube', status=True, created_at=datetime.now())
     else:
@@ -36,6 +49,27 @@ async def youtube_download_handler(message: types.Message):
 
         # Record status of result
         await db.add_api_request(name='youtube', status=False, created_at=datetime.now())
+
+
+async def youtube_callback_handler(callback: types.CallbackQuery, callback_data: dict):
+    url = callback_data.split(":")[0]
+    content_type = callback_data.split(":")[1]
+
+    try:
+        if content_type == "audio":
+            await callback.message.answer_audio(url, caption=_("@SaveAnyBot — Save Any Media!"))
+            await db.consume_credits(telegram_id=message.from_user.id)
+            await db.add_api_request(name='youtube', status=True, created_at=datetime.now())
+        elif content_type == "video":
+            await callback.message.answer_video(url, caption=_("@SaveAnyBot — Save Any Media!"))
+            await db.consume_credits(telegram_id=message.from_user.id)
+            await db.add_api_request(name='youtube', status=True, created_at=datetime.now())
+        else:
+            await message.answer(
+                _("Something went wrong, try again."),
+            )
+    except:
+        await message.answer(_("Something went wrong, try again."))
 
 
 async def twitter_download_handler(message: types.Message):
@@ -260,6 +294,7 @@ def register_download_handler(dp: Dispatcher):
     dp.register_message_handler(likee_download_handler, filters.Regexp(LIKEE_REGEX))
     dp.register_message_handler(insta_download_handler, filters.Regexp(INSTA_REGEX))    
     dp.register_message_handler(youtube_download_handler, filters.Regexp(YOUTUBE_REGEX))
+    dp.callback_query_handler()
     dp.register_message_handler(twitter_download_handler, filters.Regexp(TWITTER_REGEX))
     dp.register_message_handler(tiktok_download_handler, filters.Regexp(TIKTOK_REGEX))
     dp.register_message_handler(facebook_download_handler, filters.Regexp(FACEBOOK_REGEX))

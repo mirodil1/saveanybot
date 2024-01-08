@@ -4,7 +4,7 @@ from aiogram.utils.callback_data import CallbackData
 
 from tgbot.middlewares.i18n import _
 from tgbot.services.check_sub import check_user_sub
-
+from tgbot.services.other import url_shortener
 from tgbot.config import load_config
 
 config = load_config(".env")
@@ -113,23 +113,19 @@ lang_button = InlineKeyboardMarkup(row_width=2)
 for key, value in languages.items():
     lang_button.insert(InlineKeyboardButton(text=key, callback_data=response_callback_lang.new(code=value)))
 
- 
+
 async def download_youtube_button(items):
 
     markup = InlineKeyboardMarkup(row_width=1)
 
     for item in items:
-        if "filesize" in item:
-            if item['filesize'] > 20000000:
-                markup.insert(
-                    InlineKeyboardButton(text=_("Download {type} - {quality}p").format(type=item['type'], quality=item['quality']), url=item['url'])
-                )
-        else:
-            markup.insert(
-                    InlineKeyboardButton(text=_("Download {type} - {quality}p").format(type=item['type'], quality=item['quality']), url=item['url'])
-                )
+        # url = await url_shortener(item['url'])
+        markup.insert(
+            InlineKeyboardButton(
+                text="{extension} - {quality}".format(extension=item['extension'], quality=item['quality']),
+            )
+        )
     return markup
-
 
  
 async def download_button(url):
